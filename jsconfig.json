@@ -1,0 +1,10 @@
+{
+    "target": "es5",
+    "module": "commonjs",
+    "checkJs": true,
+    "alwaysStrict": true,
+    "typeAcquisition": {
+        "include": ["jquery"]
+    },
+    "exclude": ["node_modules"]
+}
