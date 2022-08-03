@@ -1,116 +1,129 @@
 body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
-        "Droid Sans", "Helvetica Neue", sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .custom-color-green {
-    color: #38a169;
+  color: #38a169;
 }
 .custom-color-red {
-    color: #e53e3e;
+  color: #e53e3e;
 }
 .custom-color-orange {
-    color: #c05621;
+  color: #c05621;
 }
 .custom-color-yellow {
-    color: #d69e2e;
+  color: #d69e2e;
 }
 .custom-color-blue {
-    color: #3182ce;
+  color: #3182ce;
 }
 .custom-color-gray {
-    color: #718096;
+  color: #718096;
 }
 
 #root {
-    margin-right: auto;
-    margin-left: auto;
-    width: 100%;
-    max-width: 800px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
+  max-width: 800px;
 }
 
 #title {
-    text-align: center;
-    background-color: #dd6b20;
-    color: #fff;
-    font-weight: 500;
-    font-size: 24px;
-    padding: 8px;
-    line-height: 36px;
-    margin: 0;
+  text-align: center;
+  background-color: #dd6b20;
+  color: #fff;
+  font-weight: 500;
+  font-size: 24px;
+  padding: 8px;
+  line-height: 36px;
+  margin: 0;
 }
 
 #date-picker-container {
-    background-color: #feebc8;
+  background-color: #feebc8;
+}
+
+#bazi-table div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #day-column-container {
-    margin-top: 4px;
-    margin-bottom: 4px;
-    text-align: center;
-    color: rgb(26, 32, 44);
-    background-color: #e2e8f0;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  text-align: center;
+  color: rgb(26, 32, 44);
+  background-color: #e2e8f0;
+  height: 1.5em;
 }
 
 #heavenly-stems-container,
 #earthly-branch-container {
-    background-color: #feebc8;
-    text-align: center;
-    margin-top: 4px;
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 30px;
-    padding: 4px;
+  background-color: #feebc8;
+  margin-top: 4px;
+  font-size: 20px;
+  font-weight: 700;
+  height: 2em;
+}
+
+#qimen-travel-formula-table {
+  table-layout: fixed;
+}
+
+#qimen-travel-formula-table tbody tr:first-child td:first-child,
+#qimen-travel-formula-table tbody tr:first-child td:last-child {
+  width: 3rem;
 }
 
 #qimen-travel-formula-table td {
-    padding: 0;
-    border: solid 4px white;
-    vertical-align: middle;
-    background-color: #edf2f7;
+  padding: 0;
+  border: solid 4px white;
+  vertical-align: middle;
+  background-color: #edf2f7;
 }
 
 #qimen-travel-formula-table tr td:nth-child(2) {
-    padding: 4px;
+  padding: 4px;
 }
 
 #qimen-travel-formula-table tr td:nth-child(3) {
-    padding: 10px;
-    font-weight: 700;
-    color: #fff;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  writing-mode: vertical-rl;
 }
 
 #qimen-travel-formula-table tr td:nth-child(3).lucky {
-    background-color: #e53e3e;
+  background-color: #e53e3e;
 }
 
 #qimen-travel-formula-table tr td:nth-child(3).unlucky {
-    background-color: #000;
+  background-color: #000;
 }
 
 .hour-column-container div {
-    width: 40px;
-    display: flex;
-    justify-content: center;
-    font-weight: 700;
+  width: 100%;
+  text-align: center;
+  height: 1.5em;
+  font-weight: 700;
 }
 
 .hour-column-container div:first-child {
-    background-color: #fbd38d;
-    color: #9c4221;
-    font-size: 11px;
+  background-color: #fbd38d;
+  color: #9c4221;
+  font-size: 11px;
 }
 
 .hour-column-container div:nth-child(2),
 .hour-column-container div:nth-child(3) {
-    background-color: none;
+  background-color: none;
 }
 
 .hour-column-container div:last-child {
-    background-color: #cbd5e0;
-    color: #718096;
-    font-size: 11px;
+  background-color: #cbd5e0;
+  color: #718096;
+  font-size: 11px;
 }
