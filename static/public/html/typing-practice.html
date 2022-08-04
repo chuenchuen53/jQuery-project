@@ -1,183 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no" />
 
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
-      crossorigin="anonymous"
-    ></script>
-    <link rel="stylesheet" href="./typing-practice.css" />
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <title>Typing Practice</title>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no" />
 
-  <body>
-    <div id="root" class="d-flex flex-column align-items-center justify-content-between bg-light">
-      <h1 class="h1">Typing Practice</h1>
-      <div id="content" class="d-flex justify-content-between">
-        <div id="game-stat-container">
-          <table class="table">
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+    crossorigin="anonymous" />
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="./typing-practice.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <title>Typing Practice</title>
+</head>
+
+<body>
+  <div id="root" class="d-flex flex-column align-items-center justify-content-between bg-light">
+    <h1 class="h1">Typing Practice</h1>
+    <div id="content" class="d-flex justify-content-between">
+      <div id="game-statistics-container">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Score</th>
+              <th scope="col">Count</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="table-success">
+              <th scope="row">perfect</th>
+              <td data-binding="perfect-count">0</td>
+            </tr>
+            <tr class="table-success">
+              <th scope="row">good</th>
+              <td data-binding="good-count">0</td>
+            </tr>
+            <tr class="table-success">
+              <th scope="row">combo</th>
+              <td data-binding="combo-count">0</td>
+            </tr>
+            <tr class="table-success">
+              <th scope="row">max combo</th>
+              <td data-binding="max-combo-count">0</td>
+            </tr>
+            <tr class="table-danger">
+              <th scope="row">miss</th>
+              <td data-binding="miss-count">0</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div id="track-container" class="d-flex position-relative">
+        <div id="left-little-track" class="track"></div>
+        <div id="left-ring-track" class="track"></div>
+        <div id="left-middle-track" class="track"></div>
+        <div id="left-index-track" class="track"></div>
+        <div id="right-index-track" class="track"></div>
+        <div id="right-middle-track" class="track"></div>
+        <div id="right-ring-track" class="track"></div>
+        <div id="right-little-track" class="track"></div>
+        <div id="finish-line" class="position-absolute bottom-0 end-0" style="height: 100px"></div>
+      </div>
+
+      <div id="setting-container">
+        <h4>Setting</h4>
+
+        <div>
+          <table id="character-setting-table" class="table">
             <thead>
               <tr>
-                <th scope="col">Score</th>
-                <th scope="col">Count</th>
+                <th scope="col">Set</th>
+                <th scope="col">Include</th>
               </tr>
             </thead>
             <tbody>
-              <tr class="table-success">
-                <th scope="row">perfect</th>
-                <td data-binding="perfect-count">0</td>
+              <tr class="" data-binding="alphabet">
+                <th scope="row">
+                  <label for="alphabet-switch">alphabet</label>
+                </th>
+                <td>
+                  <div class="form-check form-switch">
+                    <input id="alphabet-switch" class="form-check-input" type="checkbox" />
+                  </div>
+                </td>
               </tr>
-              <tr class="table-success">
-                <th scope="row">good</th>
-                <td data-binding="good-count">0</td>
+              <tr class="" data-binding="ALPHABET">
+                <th scope="row">
+                  <label for="ALPHABET-switch">
+                    ALPHABET
+                  </label>
+                </th>
+                <td>
+                  <div class="form-check form-switch">
+                    <input id="ALPHABET-switch" class="form-check-input" type="checkbox" />
+                  </div>
+                </td>
               </tr>
-              <tr class="table-success">
-                <th scope="row">combo</th>
-                <td data-binding="combo-count">0</td>
+              <tr class="" data-binding="digit">
+                <th scope="row">
+                  <label for="digit-switch">digit</label>
+                </th>
+                <td>
+                  <div class="form-check form-switch">
+                    <input id="digit-switch" class="form-check-input" type="checkbox" />
+                  </div>
+                </td>
               </tr>
-              <tr class="table-success">
-                <th scope="row">max combo</th>
-                <td data-binding="max-combo-count">0</td>
-              </tr>
-              <tr class="table-danger">
-                <th scope="row">miss</th>
-                <td data-binding="miss-count">0</td>
+              <tr class="" data-binding="punctuation">
+                <th scope="row">
+                  <label for="punctuation-switch">punctuation</label>
+                </th>
+                <td>
+                  <div class="form-check form-switch">
+                    <input id="punctuation-switch" class="form-check-input" type="checkbox" />
+                  </div>
+                </td>
               </tr>
             </tbody>
           </table>
         </div>
 
-        <div id="track-container" class="d-flex position-relative">
-          <div id="left-little-track" class="track"></div>
-          <div id="left-ring-track" class="track"></div>
-          <div id="left-middle-track" class="track"></div>
-          <div id="left-index-track" class="track"></div>
-          <div id="right-index-track" class="track"></div>
-          <div id="right-middle-track" class="track"></div>
-          <div id="right-ring-track" class="track"></div>
-          <div id="right-little-track" class="track"></div>
-          <div id="finish-line" class="position-absolute bottom-0 end-0" style="height: 100px"></div>
+        <div id="kpm-numerical-setting-container" data-binding="kpm" class="numerical-setting-container m-2">
+          <div class="input-group input-group-sm">
+            <label for="kpm-numerical-setting-input" class="input-group-text">kpm</label>
+            <input id="kpm-numerical-setting-input" type="number" class="form-control" />
+            <button class="btn btn-outline-primary" action="decrease" type="button">-</button>
+            <button class="btn btn-outline-primary" action="increase" type="button">+</button>
+          </div>
         </div>
 
-        <div id="setting-container">
-          <h4>Setting</h4>
-
-          <div>
-            <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">Set</th>
-                  <th scope="col">Include</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="">
-                  <th scope="row">alphabet</th>
-                  <td>
-                    <div data-binding="alphabet" class="form-check form-switch switch-container">
-                      <input class="form-check-input" type="checkbox" checked />
-                    </div>
-                  </td>
-                </tr>
-                <tr class="">
-                  <th scope="row">ALPHABET</th>
-                  <td>
-                    <div data-binding="ALPHABET" class="form-check form-switch switch-container">
-                      <input class="form-check-input" type="checkbox" checked />
-                    </div>
-                  </td>
-                </tr>
-                <tr class="">
-                  <th scope="row">digit</th>
-                  <td>
-                    <div data-binding="digit" class="form-check form-switch switch-container">
-                      <input class="form-check-input" type="checkbox" checked />
-                    </div>
-                  </td>
-                </tr>
-                <tr class="">
-                  <th scope="row">punctuation</th>
-                  <td>
-                    <div data-binding="punctuation" class="form-check form-switch switch-container">
-                      <input class="form-check-input" type="checkbox" checked />
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+        <div id="letter-speed-numerical-setting-container" data-binding="letter-speed" class="numerical-setting-container m-2">
+          <div class="input-group input-group-sm">
+            <label for="letter-speed-numerical-setting-input" class="input-group-text">letter speed</label>
+            <input id="letter-speed-numerical-setting-input" type="number" class="form-control" />
+            <span class="input-group-text">px/s</span>
+            <button class="btn btn-outline-primary" action="decrease" type="button">-</button>
+            <button class="btn btn-outline-primary" action="increase" type="button">+</button>
           </div>
-          
-          <!-- 
-          <div id="kpm-setting-container" data-binding="kpm" step="5" min="0" class="numerical-setting-container">
-            <div class="description">
-              <div class="label">kpm</div>
-              <div class="setting-value">100</div>
-            </div>
-            <div class="btn-group" role="group">
-              <button type="button" action="increase" class="btn btn-outline-primary btn-sm">+</button>
-              <button type="button" action="decrease" class="btn btn-outline-primary btn-sm">-</button>
-            </div>
-          </div> -->
+        </div>
 
-          <div id="kpm-numerical-setting-container" class="numerical-setting-container">
-            <div class="input-group input-group-sm">
-              <span class="numerical-setting-label input-group-text">kpm</span>
-              <input id="kpm-numerical-setting-input" data-binding="${dataBinding}" type="number" class="form-control" placeholder="kpm" />
-              <button class="btn btn-outline-primary" action="decrease" type="button">-</button>
-              <button class="btn btn-outline-primary" action="increase" type="button">+</button>
-            </div>
+        <div id="letter-div-height-numerical-setting-container" data-binding="letter-div-height" class="numerical-setting-container m-2">
+          <div class="input-group input-group-sm">
+            <label for="letter-div-height-numerical-setting-input" class="input-group-text">letter height</label>
+            <input id="letter-div-height-numerical-setting-input" type="number" class="form-control" />
+            <span class="numerical-setting-label input-group-text">px</span>
+            <button class="btn btn-outline-primary" action="decrease" type="button">-</button>
+            <button class="btn btn-outline-primary" action="increase" type="button">+</button>
           </div>
+        </div>
 
-          <div id="letter-speed-setting-container" data-binding="letter-speed" step="50" min="50" class="numerical-setting-container">
-            <div class="description">
-              <div class="label">letter speed</div>
-              <div class="setting-value">100</div>
-              <div class="postfix">px/s</div>
-            </div>
-            <div class="btn-group" role="group">
-              <button type="button" action="increase" class="btn btn-outline-primary btn-sm">+</button>
-              <button type="button" action="decrease" class="btn btn-outline-primary btn-sm">-</button>
-            </div>
+        <div id="check-left-right-shift-switch-container" data-binding="check-left-right-shift" class="p-2 d-flex justify-content-between">
+          <label for="check-left-right-shift-switch">check left/right shift</label>
+          <div class="form-check form-switch">
+            <input id="check-left-right-shift-switch" class="form-check-input" type="checkbox" />
           </div>
+        </div>
 
-          <div id="letter-div-height-setting-container" data-binding="letter-div-height" step="50" min="50" max="300" class="numerical-setting-container">
-            <div class="description">
-              <div class="label">letter height</div>
-              <div class="setting-value">100</div>
-              <div class="postfix">px</div>
-            </div>
-            <div class="btn-group" role="group">
-              <button type="button" action="increase" class="btn btn-outline-primary btn-sm">+</button>
-              <button type="button" action="decrease" class="btn btn-outline-primary btn-sm">-</button>
-            </div>
-          </div>
-
-          <div id="check-left-right-shift-setting-container" data-binding="check-left-right-shift" class="p-2 d-flex justify-content-between switch-container">
-            <div>check left/right shift</div>
-            <div class="form-check form-switch">
-              <input class="form-check-input" type="checkbox" checked />
-            </div>
-          </div>
-
-          <div id="game-control-container" class="d-flex justify-content-center py-2">
-            <div class="btn-group" role="group" aria-label="Basic outlined example">
-              <button type="button" id="start-practice-btn" class="btn btn-outline-primary btn-sm">Start</button>
-              <button type="button" id="stop-practice-btn" class="btn btn-outline-primary btn-sm" disabled>Stop</button>
-            </div>
+        <div id="game-control-container" class="d-flex justify-content-center py-2">
+          <div class="btn-group" role="group" aria-label="Basic outlined example">
+            <button type="button" id="start-practice-btn" class="btn btn-outline-primary btn-sm">Start</button>
+            <button type="button" id="stop-practice-btn" class="btn btn-outline-primary btn-sm" disabled>Stop</button>
           </div>
         </div>
       </div>
     </div>
-    <script src="./typing-practice.js"></script>
-  </body>
+  </div>
+  <script src="./typing-practice.js"></script>
+</body>
+
 </html>

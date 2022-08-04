@@ -1,84 +1,69 @@
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 #root {
-    width: max(1200px, 100vw, 100%);
-    height: max(500px, 100vh);
-    outline: black solid 1px;
-    background-color: lightgray;
-}
-
-.numerical-setting-container {
-    display: flex;
-    justify-content: space-between;
-    padding: 0.5rem;
-}
-
-.numerical-setting-container .description {
-    display: flex;
-    justify-content: left;
-}
-
-.numerical-setting-container .description .label {
-    padding-right: 0.25em;
-}
-
-.numerical-setting-container .description .label::after {
-    content: ":";
-}
-
-.numerical-setting-container .description .prefix {
-    padding-right: 0.5em;
-}
-
-.numerical-setting-container .description .postfix {
-    padding-left: 0.5em;
+  width: max(1200px, 100vw, 100%);
+  height: max(500px, 100vh);
+  outline: black solid 1px;
+  background-color: lightgray;
 }
 
 #content {
-    border-top: solid black 1px;
-    flex: 1 0 auto;
-    width: 100%;
+  border-top: solid black 1px;
+  flex: 1 0 auto;
+  width: 100%;
 }
 
-#game-stat-container {
-    flex: 1 1 auto;
-    width: calc((100% - 800px) / 2);
+#game-statistics-container {
+  flex: 1 1 auto;
+  width: calc((100% - 800px) / 2);
 }
 
 #track-container {
-    width: 800px;
-    flex: 0 0 auto;
+  width: 800px;
+  flex: 0 0 auto;
 }
 
 #setting-container {
-    flex: 1 1 auto;
-    width: calc((100% - 800px) / 2);
+  flex: 1 1 auto;
+  width: calc((100% - 800px) / 2);
 }
 
 .track:first-of-type {
-    border-left: grey solid 1px;
+  border-left: grey solid 1px;
 }
 
 .track {
-    width: 100px;
-    height: 100%;
-    border-right: grey solid 1px;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  width: 100px;
+  height: 100%;
+  border-right: grey solid 1px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #finish-line {
-    width: 100%;
-    border-top: grey solid 1px;
+  width: 100%;
+  border-top: grey solid 1px;
 }
 
 .letter {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100px;
-    font-size: 50px;
-    background-color: rgb(230, 230, 230);
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  font-size: 50px;
+  background-color: rgb(230, 230, 230);
 }
