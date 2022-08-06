@@ -1055,6 +1055,9 @@ class CharacterSet {
   // @ts-ignore
   static $switches = {};
 
+  /** @type {Record<string, JQuery<HTMLElement>>} */
+  static $keys = {};
+
   /**
    * @private
    * @type {LetterGenerator}
@@ -1078,6 +1081,12 @@ class CharacterSet {
         toggleSetting(typedDataKey);
       });
     }
+
+    $(".keyboard-base .key").each(function () {
+      const $this = $(this);
+      const key = $this.text();
+      CharacterSet.$keys[key] = $this;
+    });
   }
 
   /**
@@ -1104,8 +1113,15 @@ class CharacterSet {
     for (let key in KeyData.data) {
       if (CharacterSet.setting[KeyData.data[key].type]) {
         newAvailableCharacters[key] = true;
+
+        // todo
+        console.log("here");
+        CharacterSet.$keys[key]?.removeClass("exclude");
       } else {
         newAvailableCharacters[key] = false;
+
+        // todo
+        CharacterSet.$keys[key]?.addClass("exclude");
       }
     }
 
@@ -1479,6 +1495,17 @@ $(function () {
   $("#stop-practice-btn").on("click", function () {
     if (Game.getIntervalId() !== 0) {
       game.stopPractice();
+    }
+  });
+
+  $("#exampleModal").modal("show");
+
+  $(".keyboard-base .key").each(function () {
+    const $this = $(this);
+    const key = $this.text();
+    const finger = KeyData.getFinger(key);
+    if (finger) {
+      $this.addClass(finger);
     }
   });
 });

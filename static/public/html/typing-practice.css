@@ -67,3 +67,120 @@ input[type="number"] {
   font-size: 50px;
   background-color: rgb(230, 230, 230);
 }
+
+/* #region keyboard part */
+
+.keyboard-base {
+  transform: scale(0.8);
+  width: max-content;
+  padding: 20px;
+  background-color: rgb(197, 197, 197);
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: repeat(30, 30px);
+  grid-template-rows: repeat(5, 60px);
+  grid-gap: 5px;
+}
+
+.key {
+  background-color: rgb(243, 243, 243);
+  border: 2px solid black;
+  border-radius: 5px;
+  grid-column: span 2;
+  font-size: 20px;
+  text-align: center;
+  padding-top: 17px;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.key:hover {
+  animation: blinking-border 1.25s infinite;
+}
+
+.delete {
+  grid-column: span 4;
+}
+
+.tab {
+  grid-column: span 3;
+}
+
+.backslash {
+  grid-column: span 3;
+}
+
+.capslock {
+  grid-column: span 4;
+}
+
+.return {
+  grid-column: span 4;
+}
+
+.leftshift {
+  grid-column: span 5;
+}
+
+.rightshift {
+  grid-column: span 5;
+}
+
+.leftctrl {
+  grid-column: span 3;
+}
+
+.command {
+  grid-column: span 3;
+  font-size: 14px;
+}
+
+.space {
+  grid-column: span 13;
+}
+
+.keyboard-base .leftLittle,
+.keyboard-base .rightLittle {
+  background-color: #fbdea7;
+}
+
+.keyboard-base .leftRing,
+.keyboard-base .rightRing {
+  background-color: #f4b1b1;
+}
+
+.keyboard-base .leftMiddle,
+.keyboard-base .rightMiddle {
+  background-color: #c3e8b5;
+}
+
+.keyboard-base .leftIndex,
+.keyboard-base .rightIndex {
+  background-color: #b6d5f0;
+}
+
+.keyboard-base .rightIndex {
+  background-color: #bdcaeb;
+}
+
+.keyboard-base .key.exclude {
+  opacity: 0.3;
+}
+
+.keyboard-base .key.exclude:hover {
+  opacity: 1;
+}
+
+@keyframes blinking-border {
+  0% {
+    border: 2px solid black;
+  }
+  50% {
+    border: 1px solid #eeeeee;
+  }
+  100% {
+    border: 2px solid black;
+  }
+}
+
+/* #endregion */
