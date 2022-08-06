@@ -272,7 +272,7 @@ class KeyData {
       shiftKey: false,
       finger: "rightMiddle",
       shiftFinger: "",
-      type: "punctuation",
+      type: "symbol",
     },
     o: {
       key: "o",
@@ -296,7 +296,7 @@ class KeyData {
       shiftKey: false,
       finger: "rightRing",
       shiftFinger: "",
-      type: "punctuation",
+      type: "symbol",
     },
     p: {
       key: "p",
@@ -312,7 +312,7 @@ class KeyData {
       shiftKey: false,
       finger: "rightLittle",
       shiftFinger: "",
-      type: "punctuation",
+      type: "symbol",
     },
     "/": {
       key: "/",
@@ -320,7 +320,7 @@ class KeyData {
       shiftKey: false,
       finger: "rightLittle",
       shiftFinger: "",
-      type: "punctuation",
+      type: "symbol",
     },
     "!": {
       key: "!",
@@ -328,7 +328,7 @@ class KeyData {
       shiftKey: true,
       finger: "leftLittle",
       shiftFinger: "right",
-      type: "punctuation",
+      type: "symbol",
     },
     Q: {
       key: "Q",
@@ -360,7 +360,7 @@ class KeyData {
       shiftKey: true,
       finger: "leftRing",
       shiftFinger: "right",
-      type: "punctuation",
+      type: "symbol",
     },
     W: {
       key: "W",
@@ -392,7 +392,7 @@ class KeyData {
       shiftKey: true,
       finger: "leftMiddle",
       shiftFinger: "right",
-      type: "punctuation",
+      type: "symbol",
     },
     E: {
       key: "E",
@@ -424,7 +424,7 @@ class KeyData {
       shiftKey: true,
       finger: "leftIndex",
       shiftFinger: "right",
-      type: "punctuation",
+      type: "symbol",
     },
     R: {
       key: "R",
@@ -456,7 +456,7 @@ class KeyData {
       shiftKey: true,
       finger: "leftIndex",
       shiftFinger: "right",
-      type: "punctuation",
+      type: "symbol",
     },
     T: {
       key: "T",
@@ -488,7 +488,7 @@ class KeyData {
       shiftKey: true,
       finger: "rightIndex",
       shiftFinger: "left",
-      type: "punctuation",
+      type: "symbol",
     },
     Y: {
       key: "Y",
@@ -520,7 +520,7 @@ class KeyData {
       shiftKey: true,
       finger: "rightIndex",
       shiftFinger: "left",
-      type: "punctuation",
+      type: "symbol",
     },
     U: {
       key: "U",
@@ -552,7 +552,7 @@ class KeyData {
       shiftKey: true,
       finger: "rightMiddle",
       shiftFinger: "left",
-      type: "punctuation",
+      type: "symbol",
     },
     I: {
       key: "I",
@@ -576,7 +576,7 @@ class KeyData {
       shiftKey: true,
       finger: "rightMiddle",
       shiftFinger: "left",
-      type: "punctuation",
+      type: "symbol",
     },
     "(": {
       key: "(",
@@ -584,7 +584,7 @@ class KeyData {
       shiftKey: true,
       finger: "rightRing",
       shiftFinger: "left",
-      type: "punctuation",
+      type: "symbol",
     },
     O: {
       key: "O",
@@ -608,7 +608,7 @@ class KeyData {
       shiftKey: true,
       finger: "rightRing",
       shiftFinger: "left",
-      type: "punctuation",
+      type: "symbol",
     },
     ")": {
       key: ")",
@@ -616,7 +616,7 @@ class KeyData {
       shiftKey: true,
       finger: "rightLittle",
       shiftFinger: "left",
-      type: "punctuation",
+      type: "symbol",
     },
     P: {
       key: "P",
@@ -632,7 +632,7 @@ class KeyData {
       shiftKey: true,
       finger: "rightLittle",
       shiftFinger: "left",
-      type: "punctuation",
+      type: "symbol",
     },
     "?": {
       key: "?",
@@ -640,7 +640,7 @@ class KeyData {
       shiftKey: true,
       finger: "rightLittle",
       shiftFinger: "left",
-      type: "punctuation",
+      type: "symbol",
     },
   });
 
@@ -653,6 +653,135 @@ class KeyData {
    */
   static getFinger(key) {
     return KeyData.data[key]?.finger ?? "";
+  }
+}
+
+class LetterGenerator {
+  /** @private @type {Record<string, boolean>} */ static availableLetters = {};
+
+  /**
+   * @private
+   * @typedef {"leftLittle" | "leftRing" | "leftMiddle" | "leftIndex" | "rightIndex" | "rightMiddle" | "rightRing" | "rightLittle"} LetterGeneratorDataKey
+   * @typedef {Record<LetterGeneratorDataKey, string[]>} LetterGeneratorData
+   * @type {LetterGeneratorData}
+   */
+  static data = {
+    leftLittle: [],
+    leftRing: [],
+    leftMiddle: [],
+    leftIndex: [],
+    rightIndex: [],
+    rightMiddle: [],
+    rightRing: [],
+    rightLittle: [],
+  };
+
+  /** @public @type {LetterGeneratorDataKey[]} */ static activeFingers = ["leftLittle", "leftRing", "leftMiddle", "leftIndex", "rightIndex", "rightMiddle", "rightRing", "rightLittle"];
+
+  constructor() {
+    for (let key in KeyData.data) {
+      LetterGenerator.availableLetters[key] = true;
+      LetterGenerator.data[KeyData.data[key].finger].push(key);
+    }
+  }
+
+  /**
+   * @public
+   * @return {Readonly<LetterGeneratorData>}
+   */
+  getAllDate() {
+    return this.cloneReadonlyObject(LetterGenerator.data);
+  }
+
+  /**
+   * @public
+   * @param {LetterGeneratorDataKey} dataKey
+   * @return {readonly string[]}
+   */
+  getOneFingerDate(dataKey) {
+    return this.cloneReadonlyObject(LetterGenerator.data[dataKey]);
+  }
+
+  /**
+   * @public
+   * @param {Record<string, boolean>} newAvailableLetters
+   * @return {void}
+   */
+  updateData(newAvailableLetters) {
+    for (let key in newAvailableLetters) {
+      LetterGenerator.availableLetters[key] = newAvailableLetters[key];
+    }
+    for (let key in LetterGenerator.data) {
+      LetterGenerator.data[key] = [];
+    }
+    for (let key in KeyData.data) {
+      if (LetterGenerator.availableLetters[key]) {
+        const finger = KeyData.data[key].finger;
+        LetterGenerator.data[finger].push(key);
+      }
+    }
+  }
+
+  /**
+   * @public
+   * @param {number} numberOfLetters
+   * @returns {{finger: LetterGeneratorDataKey, letter: string}[]}
+   */
+  generateRandomLetter(numberOfLetters) {
+    const letters = [];
+    for (let i = 0; i < numberOfLetters; i++) {
+      letters.push(LetterGenerator.randomLetter());
+    }
+    return letters;
+  }
+
+  /**
+   * @private
+   * @template T
+   * @param {T} obj
+   * @return {T}
+   */
+  cloneObject(obj) {
+    const objClone = JSON.parse(JSON.stringify(obj));
+    return objClone;
+  }
+
+  /**
+   * @private
+   * @template T
+   * @param {T} obj
+   * @return {Readonly<T>}
+   */
+  cloneReadonlyObject(obj) {
+    const objClone = Object.freeze(this.cloneObject(obj));
+    return objClone;
+  }
+
+  /**
+   * @template T
+   * @param {T[]} array
+   * @returns {T}
+   */
+  static randomItemFromArray(array) {
+    return array[Math.floor(Math.random() * array.length)];
+  }
+
+  /**
+   * @private
+   * @returns {LetterGeneratorDataKey}
+   */
+  static randomFinger() {
+    return LetterGenerator.randomItemFromArray(LetterGenerator.activeFingers);
+  }
+
+  /**
+   * @private
+   * @returns {{finger: LetterGeneratorDataKey, letter: string}}
+   */
+  static randomLetter() {
+    const finger = LetterGenerator.randomFinger();
+    const letter = LetterGenerator.randomItemFromArray(LetterGenerator.data[finger]);
+    return { finger, letter };
   }
 }
 
@@ -684,19 +813,21 @@ class NumericalSetting {
   // @ts-ignore
   static $inputs = {};
 
-  constructor() {}
+  constructor() {
+    const setData = this.setData.bind(this);
+    const handlePlusBtnClick = this.handlePlusBtnClick.bind(this);
+    const handleMinusBtnClick = this.handleMinusBtnClick.bind(this);
+    const getInputValue = this.getInputValue.bind(this);
 
-  /** @public */
-  static initializeClass() {
     for (let dataKey in NumericalSetting.data) {
       /** @type {(NumericalSettingDataKey)}*/
       const typedDataKey = /** @type {NumericalSettingDataKey} */ (/** @type {unknown} */ (dataKey));
       const $container = $(`.numerical-setting-container[data-binding=${dataKey}]`);
       $container.find("button[action=increase]").on("click", function () {
-        NumericalSetting.increaseData(typedDataKey);
+        handlePlusBtnClick(typedDataKey);
       });
       $container.find("button[action=decrease]").on("click", function () {
-        NumericalSetting.decreaseData(typedDataKey);
+        handleMinusBtnClick(typedDataKey);
       });
 
       NumericalSetting.$inputs[dataKey] = $container.find("input");
@@ -706,11 +837,10 @@ class NumericalSetting {
       NumericalSetting.$inputs[dataKey].attr("min", min.toString());
       NumericalSetting.$inputs[dataKey].attr("max", max.toString());
       NumericalSetting.$inputs[dataKey].attr("step", step.toString());
-
       NumericalSetting.$inputs[dataKey].on("change", function () {
         const inputValue = NumericalSetting.$inputs[dataKey].val();
-        const newNumber = typeof inputValue === "number" ? inputValue : typeof inputValue === "string" ? parseInt(inputValue) : 0;
-        NumericalSetting.setData(typedDataKey, newNumber);
+        const newNumber = getInputValue(inputValue);
+        setData(typedDataKey, newNumber);
       });
     }
   }
@@ -720,26 +850,31 @@ class NumericalSetting {
    * @param {(NumericalSettingDataKey)} dataKey
    * @return {number}
    */
-  static getData(dataKey) {
+  getData(dataKey) {
     return NumericalSetting.data[dataKey];
   }
 
   /**
    * @public
-   * @param {NumericalSettingDataKey[]} dataKeys
+   * @param {(NumericalSettingDataKey)} dataKey
+   * @param {number} newNumber
+   * @return {void}
    */
-  static disableInputs(dataKeys) {
-    for (let dataKey of dataKeys) {
-      NumericalSetting.$inputs[dataKey].prop("disabled", true);
-      $(`.numerical-setting-container[data-binding=${dataKey}] button`).prop("disabled", true);
+  setData(dataKey, newNumber) {
+    NumericalSetting.data[dataKey] = this.validateMinMax(dataKey, newNumber);
+    NumericalSetting.$inputs[dataKey].val(NumericalSetting.data[dataKey].toString());
+
+    if (dataKey === "letter-div-height") {
+      this.letterDivHeightSizeEffect();
     }
   }
 
   /**
    * @public
    * @param {NumericalSettingDataKey[]} dataKeys
+   * @return {void}
    */
-  static enableInputs(dataKeys) {
+  enableInputs(dataKeys) {
     for (let dataKey of dataKeys) {
       NumericalSetting.$inputs[dataKey].prop("disabled", false);
       $(`.numerical-setting-container[data-binding=${dataKey}] button`).prop("disabled", false);
@@ -747,19 +882,51 @@ class NumericalSetting {
   }
 
   /**
-   * @private
+   * @public
+   * @param {NumericalSettingDataKey[]} dataKeys
+   * @return {void}
    */
-  static letterDivHeightSizeEffect() {
+  disableInputs(dataKeys) {
+    for (let dataKey of dataKeys) {
+      NumericalSetting.$inputs[dataKey].prop("disabled", true);
+      $(`.numerical-setting-container[data-binding=${dataKey}] button`).prop("disabled", true);
+    }
+  }
+
+  /**
+   * @private
+   * @return {void}
+   */
+  letterDivHeightSizeEffect() {
     $("#finish-line").css("height", `${NumericalSetting.data["letter-div-height"]}px`);
+  }
+
+  /**
+   * @private
+   * @param {any} inputValue
+   * @return {number}
+   */
+  getInputValue(inputValue) {
+    if (typeof inputValue === "number") {
+      return inputValue;
+    } else if (typeof inputValue === "string") {
+      const result = parseInt(inputValue);
+      if (isNaN(result)) {
+        return 0;
+      } else {
+        return result;
+      }
+    }
+    return 0;
   }
 
   /**
    * @private
    * @param {(NumericalSettingDataKey)} dataKey
    * @param {number} newNumber
-   * @returns {number}
+   * @return {number}
    */
-  static validateMinMax(dataKey, newNumber) {
+  validateMinMax(dataKey, newNumber) {
     const { min, max } = NumericalSetting.dataSetting[dataKey];
     if (newNumber < min) {
       return min;
@@ -773,33 +940,21 @@ class NumericalSetting {
   /**
    * @private
    * @param {(NumericalSettingDataKey)} dataKey
-   * @param {number} newNumber
+   * @return {void}
    */
-  static setData(dataKey, newNumber) {
-    NumericalSetting.data[dataKey] = NumericalSetting.validateMinMax(dataKey, newNumber);
-    NumericalSetting.$inputs[dataKey].val(NumericalSetting.data[dataKey].toString());
-
-    if (dataKey === "letter-div-height") {
-      NumericalSetting.letterDivHeightSizeEffect();
-    }
-  }
-
-  /**
-   * @private
-   * @param {(NumericalSettingDataKey)} dataKey
-   */
-  static increaseData(dataKey) {
+  handlePlusBtnClick(dataKey) {
     const newNumber = NumericalSetting.data[dataKey] + NumericalSetting.dataSetting[dataKey].step;
-    NumericalSetting.setData(dataKey, newNumber);
+    this.setData(dataKey, newNumber);
   }
 
   /**
    * @private
    * @param {(NumericalSettingDataKey)} dataKey
+   * @return {void}
    */
-  static decreaseData(dataKey) {
+  handleMinusBtnClick(dataKey) {
     const newNumber = NumericalSetting.data[dataKey] - NumericalSetting.dataSetting[dataKey].step;
-    NumericalSetting.setData(dataKey, newNumber);
+    this.setData(dataKey, newNumber);
   }
 }
 
@@ -822,10 +977,7 @@ class StatisticsTable {
   // @ts-ignore
   static $tableCell = {};
 
-  constructor() {}
-
-  /** @public */
-  static initializeClass() {
+  constructor() {
     for (let dataKey in StatisticsTable.data) {
       /** @type {(StatisticsTableDataKey)}*/
       const typedDataKey = /** @type {StatisticsTableDataKey} */ (/** @type {unknown} */ (dataKey));
@@ -836,25 +988,38 @@ class StatisticsTable {
 
   /**
    * @public
-   * @param {StatisticsTableDataKey} dataKey
+   * @param {(StatisticsTableDataKey)} dataKey
    */
-  static addData(dataKey) {
-    const newNumber = StatisticsTable.data[dataKey] + 1;
-    StatisticsTable.setData(dataKey, newNumber);
+  getData(dataKey) {
+    return StatisticsTable.data[dataKey];
   }
 
   /**
    * @public
    * @param {StatisticsTableDataKey} dataKey
+   * @return {void}
    */
-  static resetData(dataKey) {
-    StatisticsTable.setData(dataKey, 0);
+  addData(dataKey) {
+    const newNumber = StatisticsTable.data[dataKey] + 1;
+    this.setData(dataKey, newNumber);
   }
 
-  /** @private */
-  static sideEffectForSettingCombo() {
+  /**
+   * @public
+   * @param {StatisticsTableDataKey} dataKey
+   * @return {void}
+   */
+  resetData(dataKey) {
+    this.setData(dataKey, 0);
+  }
+
+  /**
+   * @private
+   * @return {void}
+   */
+  sideEffectForSettingCombo() {
     if (StatisticsTable.data["combo-count"] > StatisticsTable.data["max-combo-count"]) {
-      StatisticsTable.setData("max-combo-count", StatisticsTable.data["combo-count"]);
+      this.setData("max-combo-count", StatisticsTable.data["combo-count"]);
     }
   }
 
@@ -862,13 +1027,14 @@ class StatisticsTable {
    * @private
    * @param {StatisticsTableDataKey} dataKey
    * @param {number} newNumber
+   * @return {void}
    */
-  static setData(dataKey, newNumber) {
+  setData(dataKey, newNumber) {
     StatisticsTable.data[dataKey] = newNumber;
     StatisticsTable.$tableCell[dataKey].text(StatisticsTable.data[dataKey].toString());
 
     if (dataKey === "combo-count") {
-      StatisticsTable.sideEffectForSettingCombo();
+      this.sideEffectForSettingCombo();
     }
   }
 }
@@ -879,7 +1045,7 @@ class CharacterSet {
    * @typedef {(keyof CharacterSet.setting)} CharacterSetSettingKey
    */
   static setting = {
-    punctuation: true,
+    symbol: true,
     digit: true,
     ALPHABET: true,
     alphabet: true,
@@ -889,19 +1055,27 @@ class CharacterSet {
   // @ts-ignore
   static $switches = {};
 
-  constructor() {}
+  /**
+   * @private
+   * @type {LetterGenerator}
+   */
+  letterGenerator;
 
   /**
-   * @public
+   * @param {LetterGenerator} letterGenerator
    */
-  static initializeClass() {
+  constructor(letterGenerator) {
+    this.letterGenerator = letterGenerator;
+
+    const toggleSetting = this.toggleSetting.bind(this);
+
     for (let dataKey in CharacterSet.setting) {
       /** @type {(CharacterSetSettingKey)}*/
       const typedDataKey = /** @type {CharacterSetSettingKey} */ (/** @type {unknown} */ (dataKey));
       CharacterSet.$switches[typedDataKey] = $(`#character-setting-table tr[data-binding=${typedDataKey}] input`);
       CharacterSet.$switches[typedDataKey].prop("checked", CharacterSet.setting[typedDataKey]);
       CharacterSet.$switches[typedDataKey].on("change", function () {
-        CharacterSet.toggleSetting(typedDataKey);
+        toggleSetting(typedDataKey);
       });
     }
   }
@@ -909,8 +1083,9 @@ class CharacterSet {
   /**
    * @public
    * @param {CharacterSetSettingKey} dataKey
+   * @return {boolean}
    */
-  static getSetting(dataKey) {
+  getSetting(dataKey) {
     return CharacterSet.setting[dataKey];
   }
 
@@ -918,23 +1093,48 @@ class CharacterSet {
    * @private
    * @param {CharacterSetSettingKey} dataKey
    * @param {boolean} checked
+   * @return {void}
    */
-  static setSetting(dataKey, checked) {
+  setSetting(dataKey, checked) {
     CharacterSet.setting[dataKey] = checked;
     CharacterSet.$switches[dataKey].prop("checked", checked);
-    LettersForEachFinger.updateLettersForEachFinger();
+
+    /** @type {Record<string, boolean>} */
+    const newAvailableCharacters = {};
+    for (let key in KeyData.data) {
+      if (CharacterSet.setting[KeyData.data[key].type]) {
+        newAvailableCharacters[key] = true;
+      } else {
+        newAvailableCharacters[key] = false;
+      }
+    }
+
+    this.letterGenerator.updateData(newAvailableCharacters);
   }
 
   /**
    * @private
    * @param {CharacterSetSettingKey} dataKey
+   * @return {void}
    */
-  static toggleSetting(dataKey) {
-    CharacterSet.setSetting(dataKey, !CharacterSet.setting[dataKey]);
+  toggleSetting(dataKey) {
+    this.setSetting(dataKey, !CharacterSet.setting[dataKey]);
   }
 }
 
 class Game {
+  /** @private @type {NumericalSetting} */ numericalSetting;
+  /** @private @type {StatisticsTable} */ statisticsTable;
+  /** @private @type {LetterGenerator} */ letterGenerator;
+
+  /** @private @type {number}*/ static intervalId = 0;
+  /** @private @type {number}*/ static letterIdx = 0;
+  /** @private @type {number}*/ static levelCombo = 0;
+  /** @private @type {number}*/ static levelComboStep = 5;
+  /** @private @type {number}*/ static levelMissing = 0;
+  /** @private @type {number}*/ static levelMissingStep = 5;
+  /** @private @type {string}*/ static shiftKeyIsPressing = "";
+
   /**
    * @private
    * @typedef {(keyof Game.switchSetting)} GameSwitchSettingKey
@@ -943,32 +1143,129 @@ class Game {
     "check-left-right-shift": true,
   };
 
-  /** @type {{[key in CharacterSetSettingKey]: JQuery<HTMLElement>}} */
+  /** @type {JQuery<HTMLElement>}} */
   // @ts-ignore
-  static $switches = {};
+  static $comboProgressBar = null;
 
-  constructor() {}
+  /** @type {JQuery<HTMLElement>}} */
+  // @ts-ignore
+  static $missingProgressBar = null;
+
+  // @ts-ignore
+  /** @type {{[key in CharacterSetSettingKey]: JQuery<HTMLElement>}} */ static $switches = {};
 
   /**
-   * @public
+   * @param {NumericalSetting} numericalSetting
+   * @param {StatisticsTable} statisticsTable
+   * @param {LetterGenerator} letterGenerator
    */
-  static initializeClass() {
+  constructor(numericalSetting, statisticsTable, letterGenerator) {
+    this.numericalSetting = numericalSetting;
+    this.statisticsTable = statisticsTable;
+    this.letterGenerator = letterGenerator;
+
+    const toggleSetting = this.toggleSetting.bind(this);
+
     for (let dataKey in Game.switchSetting) {
       /** @type {(GameSwitchSettingKey)}*/
       const typedDataKey = /** @type {GameSwitchSettingKey} */ (/** @type {unknown} */ (dataKey));
       Game.$switches[typedDataKey] = $(`div[data-binding=${typedDataKey}] input`);
       Game.$switches[typedDataKey].prop("checked", Game.switchSetting[typedDataKey]);
       Game.$switches[typedDataKey].on("change", function () {
-        Game.toggleSetting(typedDataKey);
+        toggleSetting(typedDataKey);
       });
     }
+    Game.$comboProgressBar = $("#combo-progress-bar");
+    Game.$missingProgressBar = $("#missing-progress-bar");
   }
 
   /**
    * @public
+   */
+  static getIntervalId() {
+    return Game.intervalId;
+  }
+
+  /**
+   * @public
+   */
+  startPractice(attachListener = true) {
+    const increaseLevelMissing = this.increaseLevelMissing.bind(this);
+    const resetLevelCombo = this.resetLevelCombo.bind(this);
+    const resetLevelMissing = this.resetLevelMissing.bind(this);
+    const restartPracticeWithDifferentKmp = this.restartPracticeWithDifferentKmp.bind(this);
+    const statisticsTable = this.statisticsTable;
+
+    const trackMap = {
+      leftLittle: $("#left-little-track"),
+      leftRing: $("#left-ring-track"),
+      leftMiddle: $("#left-middle-track"),
+      leftIndex: $("#left-index-track"),
+      rightIndex: $("#right-index-track"),
+      rightMiddle: $("#right-middle-track"),
+      rightRing: $("#right-ring-track"),
+      rightLittle: $("#right-little-track"),
+    };
+    const trackHeight = $("#track-container").height() ?? 0;
+
+    const kpm = this.numericalSetting.getData("kpm");
+    const letterSpeed = this.numericalSetting.getData("letter-speed");
+    const letterDivHeight = this.numericalSetting.getData("letter-div-height");
+
+    const timeInterval = (1 / (kpm / 60)) * 1000;
+    /**@type {[number, number]} */
+    const perfectRange = [trackHeight - 2 * letterDivHeight, trackHeight - letterDivHeight];
+
+    Game.intervalId = window.setInterval(() => {
+      const newLetter = this.generateNewLetterElement(letterDivHeight, Game.letterIdx++);
+
+      if (newLetter) {
+        const { finger, element } = newLetter;
+        $(trackMap[finger]).append(element);
+        $(element).animate({ top: trackHeight + letterDivHeight }, ((trackHeight + letterDivHeight) / letterSpeed) * 1000, "linear", function () {
+          statisticsTable.addData("miss-count");
+          statisticsTable.resetData("combo-count");
+          increaseLevelMissing();
+          $(element).remove();
+        });
+      }
+
+      if (Game.levelCombo >= Game.levelComboStep) {
+        resetLevelCombo();
+        resetLevelMissing();
+        restartPracticeWithDifferentKmp(kpm + 1);
+      }
+
+      if (Game.levelMissing >= Game.levelMissingStep) {
+        resetLevelCombo();
+        resetLevelMissing();
+        restartPracticeWithDifferentKmp(kpm - 1);
+      }
+    }, timeInterval);
+
+    if (attachListener) {
+      this.attachKeydownKeyupListener(trackMap, perfectRange);
+    }
+
+    this.toggleInputAndButtonWhenStartOrStop("start");
+  }
+
+  /**
+   * @public
+   */
+  stopPractice() {
+    this.clearInterval();
+    $(document).off("keydown.game");
+    $(document).off("keyup.game");
+    $(".letter").stop().remove();
+    this.toggleInputAndButtonWhenStartOrStop("stop");
+  }
+
+  /**
+   * @private
    * @param {GameSwitchSettingKey} dataKey
    */
-  static getSwitchSetting(dataKey) {
+  getSwitchSetting(dataKey) {
     return Game.switchSetting[dataKey];
   }
 
@@ -977,7 +1274,7 @@ class Game {
    * @param {GameSwitchSettingKey} dataKey
    * @param {boolean} checked
    */
-  static setSwitchSetting(dataKey, checked) {
+  setSwitchSetting(dataKey, checked) {
     Game.switchSetting[dataKey] = checked;
     Game.$switches[dataKey].prop("checked", checked);
   }
@@ -986,245 +1283,203 @@ class Game {
    * @private
    * @param {GameSwitchSettingKey} dataKey
    */
-  static toggleSetting(dataKey) {
-    Game.setSwitchSetting(dataKey, !Game.switchSetting[dataKey]);
+  toggleSetting(dataKey) {
+    this.setSwitchSetting(dataKey, !Game.switchSetting[dataKey]);
   }
-}
 
-class LettersForEachFinger {
   /**
    * @private
-   * @typedef {(keyof LettersForEachFinger.data)} LettersForEachFingerDataKey
+   * @param {string} type
    */
-  static data = {
-    leftLittle: ["1", "q", "a", "z", "!", "Q", "A", "Z"],
-    leftRing: ["2", "w", "s", "x", "@", "W", "S", "X"],
-    leftMiddle: ["3", "e", "d", "c", "#", "E", "D", "C"],
-    leftIndex: ["4", "r", "f", "v", "5", "t", "g", "b", "$", "R", "F", "V", "%", "T", "G", "B"],
-    rightIndex: ["6", "y", "h", "n", "7", "u", "j", "m", "^", "Y", "H", "N", "&", "U", "J", "M"],
-    rightMiddle: ["8", "i", "k", ",", "*", "I", "K", "<"],
-    rightRing: ["9", "o", "l", ".", "(", "O", "L", ">"],
-    rightLittle: ["0", "p", ";", "/", ")", "P", ":", "?"],
-  };
+  toggleInputAndButtonWhenStartOrStop(type) {
+    const bool = type === "start" ? true : false;
 
-  /**
-   * @public
-   * @typedef {LettersForEachFingerDataKey[]} LettersForEachFingerSettingKey
-   */
-  static fingers = Object.freeze(["leftLittle", "leftRing", "leftMiddle", "leftIndex", "rightIndex", "rightMiddle", "rightRing", "rightLittle"]);
-
-  constructor() {}
-
-  /**
-   * @public
-   */
-  static getAllDate() {
-    return LettersForEachFinger.data;
+    bool ? this.numericalSetting.disableInputs(["kpm", "letter-speed", "letter-div-height"]) : this.numericalSetting.enableInputs(["kpm", "letter-speed", "letter-div-height"]);
+    $("#check-left-right-shift-setting-container input").prop("disabled", bool);
+    $("#start-practice-btn").prop("disabled", bool);
+    $("#stop-practice-btn").prop("disabled", !bool);
   }
 
   /**
-   * @public
-   * @param {LettersForEachFingerDataKey} dataKey
+   * @private
+   * @param {{[key in LetterGeneratorDataKey]: JQuery<HTMLElement>}} trackMap
+   * @param {[number, number]} perfectRange
    */
-  static getOneFingerDate(dataKey) {
-    return LettersForEachFinger.data[dataKey];
-  }
+  attachKeydownKeyupListener(trackMap, perfectRange) {
+    const increaseLevelCombo = this.increaseLevelCombo.bind(this);
+    const statisticsTable = this.statisticsTable;
 
-  /**
-   * @public
-   */
-  static updateLettersForEachFinger() {
-    for (let key in LettersForEachFinger.data) {
-      LettersForEachFinger.data[key] = [];
-    }
-    for (let key in KeyData.data) {
-      const type = KeyData.data[key].type;
-      if (CharacterSet.getSetting(type)) {
-        const finger = KeyData.data[key].finger;
-        LettersForEachFinger.data[finger].push(key);
+    const checkLeftRightShift = this.getSwitchSetting("check-left-right-shift");
+
+    $(document).on("keydown.game", function (/** @type{JQuery.KeyDownEvent<Document, undefined, Document, Document>}*/ e) {
+      if (e.code === "ShiftLeft" && Game.shiftKeyIsPressing !== "left") {
+        Game.shiftKeyIsPressing = "left";
+      } else if (e.code === "ShiftRight" && Game.shiftKeyIsPressing !== "right") {
+        Game.shiftKeyIsPressing = "right";
       }
-    }
-  }
-
-  /**
-   * @private
-   * @param {number} min
-   * @param {number} max
-   * @returns {number}
-   */
-  static randomInt(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
-
-  /**
-   * @public
-   * @returns {LettersForEachFingerDataKey}
-   */
-  static randomFinger() {
-    /** @type {LettersForEachFingerDataKey} */
-    const typedFinger = /** @type {LettersForEachFingerDataKey} */ (LettersForEachFinger.fingers[LettersForEachFinger.randomInt(0, 7)]);
-    return typedFinger;
-  }
-
-  /**
-   * @public
-   * @param {LettersForEachFingerDataKey} finger
-   * @returns {string}
-   */
-  static randomLetter(finger) {
-    const letters = LettersForEachFinger.getOneFingerDate(finger);
-    return letters[LettersForEachFinger.randomInt(0, letters.length - 1)];
-  }
-}
-
-/**
- *
- * @param {number} idx
- */
-function getZIndex(idx) {
-  return 1000 - (idx % 1000);
-}
-
-/**
- *
- * @param {LettersForEachFingerDataKey} finger
- * @param {number} letterDivHeight
- * @param {number} idx
- * @returns {JQuery<HTMLElement>}
- */
-function generateNewLetter(finger, letterDivHeight, idx) {
-  const letterDivHeightStr = letterDivHeight.toString() + "px";
-
-  let newElement = $("<div class='letter'></div>")
-    .css({ height: letterDivHeightStr, top: "-" + letterDivHeightStr, zIndex: getZIndex(idx) })
-    .text(LettersForEachFinger.randomLetter(finger));
-
-  return newElement;
-}
-
-/**
- *
- * @param {string} type
- */
-function toggleSettingWhenStartOrStop(type) {
-  const bool = type === "start" ? true : false;
-
-  bool ? NumericalSetting.disableInputs(["kpm", "letter-speed", "letter-div-height"]) : NumericalSetting.enableInputs(["kpm", "letter-speed", "letter-div-height"]);
-  $("#check-left-right-shift-setting-container input").prop("disabled", bool);
-  $("#start-practice-btn").prop("disabled", bool);
-  $("#stop-practice-btn").prop("disabled", !bool);
-}
-
-/**
- *
- * @param {number} kpm
- * @param {number} letterSpeed
- * @param {number} letterDivHeight
- * @param {any} trackMap
- * @param {number} trackHeight
- * @param {boolean} checkLeftRightShift
- */
-function startPractice(kpm, letterSpeed, letterDivHeight, trackMap, trackHeight, checkLeftRightShift) {
-  let idx = 0;
-  let shiftKeyIsPressing = "";
-  const timeInterval = (1 / (kpm / 60)) * 1000;
-  const perfectRange = [trackHeight - 2 * letterDivHeight, trackHeight - letterDivHeight];
-
-  const intervalId = window.setInterval(() => {
-    let finger = LettersForEachFinger.randomFinger();
-    let newLetter = generateNewLetter(finger, letterDivHeight, idx++);
-    $(trackMap[finger]).append(newLetter);
-    $(newLetter).animate({ top: trackHeight + letterDivHeight }, ((trackHeight + letterDivHeight) / letterSpeed) * 1000, "linear", function () {
-      StatisticsTable.addData("miss-count");
-      StatisticsTable.resetData("combo-count");
-      $(newLetter).remove();
     });
-  }, timeInterval);
 
-  $(document).on("keydown", function (e) {
-    if (e.code === "ShiftLeft" && shiftKeyIsPressing !== "left") {
-      shiftKeyIsPressing = "left";
-    } else if (e.code === "ShiftRight" && shiftKeyIsPressing !== "right") {
-      shiftKeyIsPressing = "right";
-    }
-  });
+    $(document).on("keyup.game", function (/** @type{JQuery.KeyUpEvent<Document, undefined, Document, Document>} */ e) {
+      if (e.code === "ShiftLeft" || e.code === "ShiftRight") {
+        Game.shiftKeyIsPressing = "";
+        return;
+      }
 
-  $(document).on("keyup", function (e) {
-    if (e.code === "ShiftLeft" || e.code === "ShiftRight") {
-      shiftKeyIsPressing = "";
-      return;
-    }
+      const finger = KeyData.getFinger(e.key);
+      if (finger) {
+        const track = trackMap[finger];
+        const firstChild = $(track).children().first();
+        if (e.key === $(firstChild).text()) {
+          if (checkLeftRightShift) {
+            if (KeyData.data[e.key].shiftFinger !== Game.shiftKeyIsPressing) {
+              return;
+            }
+          }
 
-    const finger = KeyData.getFinger(e.key);
-    if (finger) {
-      const track = trackMap[finger];
-      const firstChild = $(track).children().first();
-      if (e.key === $(firstChild).text()) {
-        if (checkLeftRightShift) {
-          if (KeyData.data[e.key].shiftFinger !== shiftKeyIsPressing) {
-            return;
+          const top = parseInt($(firstChild).css("top").replace("px", ""));
+          if (top >= perfectRange[0] && top <= perfectRange[1]) {
+            statisticsTable.addData("perfect-count");
+            statisticsTable.addData("combo-count");
+            $(firstChild).stop().remove();
+            increaseLevelCombo(2);
+          } else {
+            statisticsTable.addData("good-count");
+            statisticsTable.addData("combo-count");
+            $(firstChild).stop().remove();
+            increaseLevelCombo(1);
           }
         }
-
-        const top = parseInt($(firstChild).css("top").replace("px", ""));
-        if (top >= perfectRange[0] && top <= perfectRange[1]) {
-          StatisticsTable.addData("perfect-count");
-          StatisticsTable.addData("combo-count");
-          $(firstChild).stop().remove();
-        } else {
-          StatisticsTable.addData("good-count");
-          StatisticsTable.addData("combo-count");
-          $(firstChild).stop().remove();
-        }
       }
-    }
-  });
+    });
+  }
 
-  return intervalId;
+  /**
+   * @private
+   */
+  clearInterval() {
+    window.clearInterval(Game.getIntervalId());
+    Game.intervalId = 0;
+  }
+
+  /**
+   * @private
+   * @param {number} kpm
+   */
+  restartPracticeWithDifferentKmp(kpm) {
+    this.clearInterval();
+    this.numericalSetting.setData("kpm", kpm);
+    this.startPractice(false);
+  }
+
+  /**
+   * @private
+   * @param {number} newValue
+   */
+  setLevelCombo(newValue) {
+    Game.levelCombo = newValue;
+    Game.$comboProgressBar.css("width", `${(Game.levelCombo / Game.levelComboStep) * 100}%`);
+  }
+
+  /**
+   * @private
+   * @param {number} increment
+   */
+  increaseLevelCombo(increment) {
+    this.setLevelCombo(Game.levelCombo + increment);
+    this.resetLevelMissing();
+  }
+
+  // /**
+  //  * @private
+  //  * @param {number} decrement
+  //  */
+  // static decreaseLevelCombo(decrement) {
+  //   Game.setLevelCombo(Game.levelCombo - decrement);
+  // }
+
+  /**
+   * @private
+   */
+  resetLevelCombo() {
+    this.setLevelCombo(0);
+  }
+
+  /**
+   * @private
+   * @param {number} newValue
+   */
+  setLevelMissing(newValue) {
+    Game.levelMissing = newValue;
+    Game.$missingProgressBar.css("width", `${(Game.levelMissing / Game.levelMissingStep) * 100}%`);
+  }
+
+  /**
+   * @private
+   */
+  increaseLevelMissing() {
+    this.setLevelMissing(Game.levelMissing + 1);
+    this.resetLevelCombo();
+  }
+
+  /**
+   * @private
+   */
+  resetLevelMissing() {
+    this.setLevelMissing(0);
+  }
+
+  /**
+   * @private
+   * @param {number} idx
+   */
+  getZIndex(idx) {
+    return 1000 - (idx % 1000);
+  }
+
+  /**
+   * @private
+   * @param {number} letterDivHeight
+   * @param {number} idx
+   * @returns {{finger: LetterGeneratorDataKey, element: JQuery<HTMLElement>} | undefined}
+   */
+  generateNewLetterElement(letterDivHeight, idx) {
+    const getZIndex = this.getZIndex.bind(this);
+
+    const letterDivHeightStr = letterDivHeight.toString() + "px";
+    const { finger, letter } = this.letterGenerator.generateRandomLetter(1)[0];
+
+    if (!letter) {
+      return undefined;
+    }
+
+    let element = $("<div class='letter'></div>")
+      .css({ height: letterDivHeightStr, top: "-" + letterDivHeightStr, zIndex: getZIndex(idx) })
+      .text(letter);
+
+    return { finger, element };
+  }
 }
 
 // $(document).ready
 $(function () {
-  let intervalId = 0;
-  let trackHeight = $("#track-container").height() ?? 0;
-  let trackMap = {
-    leftLittle: $("#left-little-track"),
-    leftRing: $("#left-ring-track"),
-    leftMiddle: $("#left-middle-track"),
-    leftIndex: $("#left-index-track"),
-    rightIndex: $("#right-index-track"),
-    rightMiddle: $("#right-middle-track"),
-    rightRing: $("#right-ring-track"),
-    rightLittle: $("#right-little-track"),
-  };
+  // let intervalId = 0;
 
-  CharacterSet.initializeClass();
-  StatisticsTable.initializeClass();
-  NumericalSetting.initializeClass();
-  Game.initializeClass();
+  const letterGenerator = new LetterGenerator();
+  const characterSet = new CharacterSet(letterGenerator);
+  const statisticsTable = new StatisticsTable();
+  const numericalSetting = new NumericalSetting();
+  const game = new Game(numericalSetting, statisticsTable, letterGenerator);
 
   $("#start-practice-btn").on("click", function () {
-    if (intervalId === 0) {
-      const kpm = NumericalSetting.getData("kpm");
-      const letterSpeed = NumericalSetting.getData("letter-speed");
-      const letterDivHeight = NumericalSetting.getData("letter-div-height");
-      const checkLeftRightShift = Game.getSwitchSetting("check-left-right-shift");
-
-      intervalId = startPractice(kpm, letterSpeed, letterDivHeight, trackMap, trackHeight, checkLeftRightShift);
-      toggleSettingWhenStartOrStop("start");
+    if (Game.getIntervalId() === 0) {
+      game.startPractice();
     }
   });
 
   $("#stop-practice-btn").on("click", function () {
-    if (intervalId !== 0) {
-      window.clearInterval(intervalId);
-      intervalId = 0;
+    if (Game.getIntervalId() !== 0) {
+      game.stopPractice();
     }
-    $(document).off("keydown");
-    $(document).off("keyup");
-
-    $(".letter").stop().remove();
-    toggleSettingWhenStartOrStop("stop");
   });
 });
 
@@ -1274,7 +1529,7 @@ $(function () {
 // let alphabet = [];
 // let ALPHABET = [];
 // let digit = [];
-// let punctuation = [];
+// let symbol = [];
 
 // for (let x of all) {
 //     if (x.key.match(/[a-z]/)) {
@@ -1284,20 +1539,20 @@ $(function () {
 //     } else if (x.key.match(/[0-9]/)) {
 //         digit.push(x);
 //     } else {
-//         punctuation.push(x);
+//         symbol.push(x);
 //     }
 // }
 
 // console.log(`alphabet`, alphabet);
 // console.log(`ALPHABET`, ALPHABET);
 // console.log(`digit`, digit);
-// console.log(`punctuation`, punctuation);
+// console.log(`symbol`, symbol);
 
 // console.log(`alphabet.length`, alphabet.length);
 // console.log(`ALPHABET.length`, ALPHABET.length);
 // console.log(`digit.length`, digit.length);
-// console.log(`punctuation.length`, punctuation.length);
-// console.log(`sum of length`, alphabet.length + ALPHABET.length + digit.length + punctuation.length);
+// console.log(`symbol.length`, symbol.length);
+// console.log(`sum of length`, alphabet.length + ALPHABET.length + digit.length + symbol.length);
 
 // function checkDigits() {
 //     const digits = [];
