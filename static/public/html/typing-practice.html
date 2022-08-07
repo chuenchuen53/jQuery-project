@@ -23,6 +23,8 @@
   <div id="root" class="d-flex flex-column align-items-center justify-content-between bg-light">
     <h1 class="h1">Typing Practice</h1>
     <div id="content" class="d-flex justify-content-between">
+
+      <!-- #region left side bar -->
       <div id="game-statistics-container">
         <table class="table">
           <thead>
@@ -55,7 +57,9 @@
           </tbody>
         </table>
       </div>
+      <!-- #endregion left side bar -->
 
+      <!-- #region main panel -->
       <div id="track-container" class="d-flex position-relative">
         <div id="left-little-track" class="track"></div>
         <div id="left-ring-track" class="track"></div>
@@ -65,143 +69,267 @@
         <div id="right-middle-track" class="track"></div>
         <div id="right-ring-track" class="track"></div>
         <div id="right-little-track" class="track"></div>
-        <div id="finish-line" class="position-absolute bottom-0 end-0" style="height: 100px">
+        <div id="perfect-line" class="position-absolute bottom-0 end-0" style="height: 300px">
           <div id="progress-bar-container" class="progress mx-1 justify-content-between">
             <div id="combo-progress-bar" class="progress-bar bg-primary" role="progressbar" style="width: 0%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
             <div id="missing-progress-bar" class="progress-bar bg-danger" role="progressbar" style="width: 0%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
         </div>
       </div>
+      <!-- #endregion main panel -->
 
-      <div id="setting-container">
+      <!-- #region right side bar -->
+      <div id="setting-container" class="p-2">
         <h4>Setting</h4>
 
         <div>
-          <table id="character-setting-table" class="table">
-            <thead>
-              <tr>
-                <th scope="col">Set</th>
-                <th scope="col">Include</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="" data-binding="alphabet">
-                <th scope="row">
-                  <label for="alphabet-switch">alphabet</label>
-                </th>
-                <td>
-                  <div class="form-check form-switch">
-                    <input id="alphabet-switch" class="form-check-input" type="checkbox" />
-                  </div>
-                </td>
-              </tr>
-              <tr class="" data-binding="ALPHABET">
-                <th scope="row">
-                  <label for="ALPHABET-switch">
-                    ALPHABET
-                  </label>
-                </th>
-                <td>
-                  <div class="form-check form-switch">
-                    <input id="ALPHABET-switch" class="form-check-input" type="checkbox" />
-                  </div>
-                </td>
-              </tr>
-              <tr class="" data-binding="digit">
-                <th scope="row">
-                  <label for="digit-switch">digit</label>
-                </th>
-                <td>
-                  <div class="form-check form-switch">
-                    <input id="digit-switch" class="form-check-input" type="checkbox" />
-                  </div>
-                </td>
-              </tr>
-              <tr class="" data-binding="symbol">
-                <th scope="row">
-                  <label for="symbol-switch">symbol</label>
-                </th>
-                <td>
-                  <div class="form-check form-switch">
-                    <input id="symbol-switch" class="form-check-input" type="checkbox" />
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div id="kpm-numerical-setting-container" data-binding="kpm" class="numerical-setting-container m-2">
-          <div class="input-group input-group-sm">
-            <label for="kpm-numerical-setting-input" class="input-group-text">kpm</label>
-            <input id="kpm-numerical-setting-input" type="number" class="form-control" />
-            <button class="btn btn-outline-primary" action="decrease" type="button">-</button>
-            <button class="btn btn-outline-primary" action="increase" type="button">+</button>
+          <div id="kpm-numerical-setting-container" data-binding="kpm" class="numerical-setting-container mb-2">
+            <div class="input-group input-group-sm">
+              <label for="kpm-numerical-setting-input" class="input-group-text">kpm</label>
+              <input id="kpm-numerical-setting-input" type="number" class="form-control" />
+              <button class="btn btn-outline-primary" action="decrease" type="button">-</button>
+              <button class="btn btn-outline-primary" action="increase" type="button">+</button>
+            </div>
+          </div>
+          <div id="letter-speed-numerical-setting-container" data-binding="letter-speed" class="numerical-setting-container mb-2">
+            <div class="input-group input-group-sm">
+              <label for="letter-speed-numerical-setting-input" class="input-group-text">letter speed</label>
+              <input id="letter-speed-numerical-setting-input" type="number" class="form-control" />
+              <span class="input-group-text">px/s</span>
+              <button class="btn btn-outline-primary" action="decrease" type="button">-</button>
+              <button class="btn btn-outline-primary" action="increase" type="button">+</button>
+            </div>
+          </div>
+          <div id="letter-div-height-numerical-setting-container" data-binding="letter-div-height" class="numerical-setting-container mb-2">
+            <div class="input-group input-group-sm">
+              <label for="letter-div-height-numerical-setting-input" class="input-group-text">letter height</label>
+              <input id="letter-div-height-numerical-setting-input" type="number" class="form-control" />
+              <span class="numerical-setting-label input-group-text">px</span>
+              <button class="btn btn-outline-primary" action="decrease" type="button">-</button>
+              <button class="btn btn-outline-primary" action="increase" type="button">+</button>
+            </div>
+          </div>
+          <div id="perfect-height-numerical-setting-container" data-binding="perfect-height" class="numerical-setting-container mb-2">
+            <div class="input-group input-group-sm">
+              <label for="perfect-height-numerical-setting-input" class="input-group-text">perfect height</label>
+              <input id="perfect-height-numerical-setting-input" type="number" class="form-control" />
+              <button class="btn btn-outline-primary" action="decrease" type="button">-</button>
+              <button class="btn btn-outline-primary" action="increase" type="button">+</button>
+            </div>
           </div>
         </div>
 
-        <div id="letter-speed-numerical-setting-container" data-binding="letter-speed" class="numerical-setting-container m-2">
-          <div class="input-group input-group-sm">
-            <label for="letter-speed-numerical-setting-input" class="input-group-text">letter speed</label>
-            <input id="letter-speed-numerical-setting-input" type="number" class="form-control" />
-            <span class="input-group-text">px/s</span>
-            <button class="btn btn-outline-primary" action="decrease" type="button">-</button>
-            <button class="btn btn-outline-primary" action="increase" type="button">+</button>
-          </div>
-        </div>
-
-        <div id="letter-div-height-numerical-setting-container" data-binding="letter-div-height" class="numerical-setting-container m-2">
-          <div class="input-group input-group-sm">
-            <label for="letter-div-height-numerical-setting-input" class="input-group-text">letter height</label>
-            <input id="letter-div-height-numerical-setting-input" type="number" class="form-control" />
-            <span class="numerical-setting-label input-group-text">px</span>
-            <button class="btn btn-outline-primary" action="decrease" type="button">-</button>
-            <button class="btn btn-outline-primary" action="increase" type="button">+</button>
-          </div>
-        </div>
-
-        <div id="check-left-right-shift-switch-container" data-binding="check-left-right-shift" class="p-2 d-flex justify-content-between">
+        <div id="check-left-right-shift-switch-container" data-binding="check-left-right-shift" class="y-2 d-flex justify-content-between">
           <label for="check-left-right-shift-switch">check left/right shift</label>
           <div class="form-check form-switch">
             <input id="check-left-right-shift-switch" class="form-check-input" type="checkbox" />
           </div>
         </div>
 
-        <div id="game-control-container" class="d-flex justify-content-center py-2">
+        <!-- Button trigger modal -->
+        <div class="d-flex justify-content-center my-2">
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#characterSetModal">
+            Character Set
+          </button>
+        </div>
+
+
+        <div id="game-control-container" class="d-flex justify-content-center my-2">
           <div class="btn-group" role="group" aria-label="Basic outlined example">
             <button type="button" id="start-practice-btn" class="btn btn-outline-primary btn-sm">Start</button>
             <button type="button" id="stop-practice-btn" class="btn btn-outline-primary btn-sm" disabled>Stop</button>
           </div>
         </div>
 
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-          Launch demo modal
-        </button>
 
       </div>
+      <!-- #endregion right side bar -->
     </div>
   </div>
 
 
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <!-- #region modal -->
+  <div class="modal fade" id="characterSetModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="characterSetModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <h5 class="modal-title" id="characterSetModalLabel">Character Set</h5>
         </div>
         <div class="modal-body">
-          <!-- todo -->
-          <!-- todo -->
-          <!-- todo -->
-          <!-- todo -->
-          <!-- todo -->
-          <!-- todo -->
-          <!-- todo -->
 
-          <div>
+          <div class="d-flex">
+            <div class="m-2">
+              <h6>Character Type</h6>
+              <ul id="character-set-ul" class="list-group">
+                <li class="list-group-item">
+                  <div data-binding="alphabet" class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="alphabet-checkbox">
+                    <label class="form-check-label" for="alphabet-checkbox">
+                      alphabet
+                    </label>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <div data-binding="ALPHABET" class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="ALPHABET-checkbox">
+                    <label class="form-check-label" for="ALPHABET-checkbox">
+                      ALPHABET
+                    </label>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <div data-binding="digit" class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="digit-checkbox">
+                    <label class="form-check-label" for="digit-checkbox">
+                      digit
+                    </label>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <div data-binding="symbol" class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="symbol-checkbox">
+                    <label class="form-check-label" for="symbol-checkbox">
+                      symbol
+                    </label>
+                  </div>
+                  <ul id="symbol-subset-ul">
+                    <li>
+                      <div data-binding="basic-symbol" class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="basic-symbol-checkbox">
+                        <label class="form-check-label" for="basic-symbol-checkbox">
+                          basic symbol
+                        </label>
+                      </div>
+                    </li>
+                    <li>
+                      <div data-binding="digit-symbol" class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="digit-symbol-checkbox">
+                        <label class="form-check-label" for="digit-symbol-checkbox">
+                          digit symbol
+                        </label>
+                      </div>
+                    </li>
+                    <li>
+                      <div data-binding="advance-symbol" class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="advance-symbol-checkbox">
+                        <label class="form-check-label" for="advance-symbol-checkbox">
+                          advance symbol
+                        </label>
+                      </div>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <div class="m-2">
+              <h6>Fingers</h6>
+              <ul id="finger-set-ul" class="list-group">
+                <li class="list-group-item">
+                  <div data-binding="leftLittle" class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="leftLittle-checkbox">
+                    <label class="form-check-label" for="leftLittle-checkbox">
+                      left little
+                    </label>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <div data-binding="leftRing" class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="leftRing-checkbox">
+                    <label class="form-check-label" for="leftRing-checkbox">
+                      left ring
+                    </label>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <div data-binding="leftMiddle" class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="leftMiddle-checkbox">
+                    <label class="form-check-label" for="leftMiddle-checkbox">
+                      left middle
+                    </label>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <div data-binding="leftIndex" class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="leftIndex-checkbox">
+                    <label class="form-check-label" for="leftIndex-checkbox">
+                      left index
+                    </label>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <div data-binding="rightIndex" class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="rightIndex-checkbox">
+                    <label class="form-check-label" for="rightIndex-checkbox">
+                      right index
+                    </label>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <div data-binding="rightMiddle" class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="rightMiddle-checkbox">
+                    <label class="form-check-label" for="rightMiddle-checkbox">
+                      right middle
+                    </label>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <div data-binding="rightRing" class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="rightRing-checkbox">
+                    <label class="form-check-label" for="rightRing-checkbox">
+                      right ring
+                    </label>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <div data-binding="rightLittle" class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="rightLittle-checkbox">
+                    <label class="form-check-label" for="rightLittle-checkbox">
+                      right little
+                    </label>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="m-2">
+              <h6>Keyboard Row</h6>
+              <ul id="keyboard-row-set-ul" class="list-group">
+                <li class="list-group-item">
+                  <div data-binding="keyboardRow_1" class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="keyboardRow_1-checkbox">
+                    <label class="form-check-label" for="keyboardRow_1-checkbox">
+                      row 1
+                    </label>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <div data-binding="keyboardRow_2" class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="keyboardRow_2-checkbox">
+                    <label class="form-check-label" for="keyboardRow_2-checkbox">
+                      row 2
+                    </label>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <div data-binding="keyboardRow_3" class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="keyboardRow_3-checkbox">
+                    <label class="form-check-label" for="keyboardRow_3-checkbox">
+                      row 3
+                    </label>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <div data-binding="keyboardRow_4" class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="keyboardRow_4-checkbox">
+                    <label class="form-check-label" for="keyboardRow_4-checkbox">
+                      row 4
+                    </label>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="overflow-auto">
             <div class="keyboard-base">
               <div class="key">`</div>
               <div class="key">1</div>
@@ -333,12 +461,12 @@
 
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
         </div>
       </div>
     </div>
   </div>
+  <!-- #endregion modal -->
 
   <script src="./typing-practice.js"></script>
 </body>

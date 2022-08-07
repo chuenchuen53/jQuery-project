@@ -53,9 +53,8 @@ input[type="number"] {
   align-items: center;
 }
 
-#finish-line {
+#perfect-line {
   width: 100%;
-  border-top: grey solid 1px;
 }
 
 .letter {
@@ -71,7 +70,6 @@ input[type="number"] {
 /* #region keyboard part */
 
 .keyboard-base {
-  transform: scale(0.8);
   width: max-content;
   padding: 20px;
   background-color: rgb(197, 197, 197);
@@ -80,6 +78,7 @@ input[type="number"] {
   grid-template-columns: repeat(30, 30px);
   grid-template-rows: repeat(5, 60px);
   grid-gap: 5px;
+  margin-bottom: 16px;
 }
 
 .key {
@@ -90,8 +89,8 @@ input[type="number"] {
   font-size: 20px;
   text-align: center;
   padding-top: 17px;
-  user-select: none;
   -webkit-user-select: none;
+  user-select: none;
 }
 
 .key:hover {

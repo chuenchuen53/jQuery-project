@@ -9,6 +9,7 @@ class KeyData {
       finger: "rightLittle",
       shiftFinger: "",
       type: "digit",
+      keyboardRow: 1,
     },
     1: {
       key: "1",
@@ -17,6 +18,7 @@ class KeyData {
       finger: "leftLittle",
       shiftFinger: "",
       type: "digit",
+      keyboardRow: 1,
     },
     2: {
       key: "2",
@@ -25,6 +27,7 @@ class KeyData {
       finger: "leftRing",
       shiftFinger: "",
       type: "digit",
+      keyboardRow: 1,
     },
     3: {
       key: "3",
@@ -33,6 +36,7 @@ class KeyData {
       finger: "leftMiddle",
       shiftFinger: "",
       type: "digit",
+      keyboardRow: 1,
     },
     4: {
       key: "4",
@@ -41,6 +45,7 @@ class KeyData {
       finger: "leftIndex",
       shiftFinger: "",
       type: "digit",
+      keyboardRow: 1,
     },
     5: {
       key: "5",
@@ -49,6 +54,7 @@ class KeyData {
       finger: "leftIndex",
       shiftFinger: "",
       type: "digit",
+      keyboardRow: 1,
     },
     6: {
       key: "6",
@@ -57,6 +63,7 @@ class KeyData {
       finger: "rightIndex",
       shiftFinger: "",
       type: "digit",
+      keyboardRow: 1,
     },
     7: {
       key: "7",
@@ -65,6 +72,7 @@ class KeyData {
       finger: "rightIndex",
       shiftFinger: "",
       type: "digit",
+      keyboardRow: 1,
     },
     8: {
       key: "8",
@@ -73,6 +81,7 @@ class KeyData {
       finger: "rightMiddle",
       shiftFinger: "",
       type: "digit",
+      keyboardRow: 1,
     },
     9: {
       key: "9",
@@ -81,6 +90,7 @@ class KeyData {
       finger: "rightRing",
       shiftFinger: "",
       type: "digit",
+      keyboardRow: 1,
     },
     q: {
       key: "q",
@@ -89,6 +99,7 @@ class KeyData {
       finger: "leftLittle",
       shiftFinger: "",
       type: "alphabet",
+      keyboardRow: 2,
     },
     a: {
       key: "a",
@@ -97,6 +108,7 @@ class KeyData {
       finger: "leftLittle",
       shiftFinger: "",
       type: "alphabet",
+      keyboardRow: 3,
     },
     z: {
       key: "z",
@@ -105,6 +117,7 @@ class KeyData {
       finger: "leftLittle",
       shiftFinger: "",
       type: "alphabet",
+      keyboardRow: 4,
     },
     w: {
       key: "w",
@@ -113,6 +126,7 @@ class KeyData {
       finger: "leftRing",
       shiftFinger: "",
       type: "alphabet",
+      keyboardRow: 2,
     },
     s: {
       key: "s",
@@ -121,6 +135,7 @@ class KeyData {
       finger: "leftRing",
       shiftFinger: "",
       type: "alphabet",
+      keyboardRow: 3,
     },
     x: {
       key: "x",
@@ -129,6 +144,7 @@ class KeyData {
       finger: "leftRing",
       shiftFinger: "",
       type: "alphabet",
+      keyboardRow: 4,
     },
     e: {
       key: "e",
@@ -137,6 +153,7 @@ class KeyData {
       finger: "leftMiddle",
       shiftFinger: "",
       type: "alphabet",
+      keyboardRow: 2,
     },
     d: {
       key: "d",
@@ -145,6 +162,7 @@ class KeyData {
       finger: "leftMiddle",
       shiftFinger: "",
       type: "alphabet",
+      keyboardRow: 3,
     },
     c: {
       key: "c",
@@ -153,6 +171,7 @@ class KeyData {
       finger: "leftMiddle",
       shiftFinger: "",
       type: "alphabet",
+      keyboardRow: 4,
     },
     r: {
       key: "r",
@@ -161,6 +180,7 @@ class KeyData {
       finger: "leftIndex",
       shiftFinger: "",
       type: "alphabet",
+      keyboardRow: 2,
     },
     f: {
       key: "f",
@@ -169,6 +189,7 @@ class KeyData {
       finger: "leftIndex",
       shiftFinger: "",
       type: "alphabet",
+      keyboardRow: 3,
     },
     v: {
       key: "v",
@@ -177,6 +198,7 @@ class KeyData {
       finger: "leftIndex",
       shiftFinger: "",
       type: "alphabet",
+      keyboardRow: 4,
     },
     t: {
       key: "t",
@@ -185,6 +207,7 @@ class KeyData {
       finger: "leftIndex",
       shiftFinger: "",
       type: "alphabet",
+      keyboardRow: 2,
     },
     g: {
       key: "g",
@@ -193,6 +216,7 @@ class KeyData {
       finger: "leftIndex",
       shiftFinger: "",
       type: "alphabet",
+      keyboardRow: 3,
     },
     b: {
       key: "b",
@@ -201,6 +225,7 @@ class KeyData {
       finger: "leftIndex",
       shiftFinger: "",
       type: "alphabet",
+      keyboardRow: 4,
     },
     y: {
       key: "y",
@@ -209,6 +234,7 @@ class KeyData {
       finger: "rightIndex",
       shiftFinger: "",
       type: "alphabet",
+      keyboardRow: 2,
     },
     h: {
       key: "h",
@@ -217,6 +243,7 @@ class KeyData {
       finger: "rightIndex",
       shiftFinger: "",
       type: "alphabet",
+      keyboardRow: 3,
     },
     n: {
       key: "n",
@@ -225,6 +252,7 @@ class KeyData {
       finger: "rightIndex",
       shiftFinger: "",
       type: "alphabet",
+      keyboardRow: 4,
     },
     u: {
       key: "u",
@@ -233,6 +261,7 @@ class KeyData {
       finger: "rightIndex",
       shiftFinger: "",
       type: "alphabet",
+      keyboardRow: 2,
     },
     j: {
       key: "j",
@@ -241,6 +270,7 @@ class KeyData {
       finger: "rightIndex",
       shiftFinger: "",
       type: "alphabet",
+      keyboardRow: 3,
     },
     m: {
       key: "m",
@@ -249,6 +279,7 @@ class KeyData {
       finger: "rightIndex",
       shiftFinger: "",
       type: "alphabet",
+      keyboardRow: 4,
     },
     i: {
       key: "i",
@@ -257,6 +288,7 @@ class KeyData {
       finger: "rightMiddle",
       shiftFinger: "",
       type: "alphabet",
+      keyboardRow: 2,
     },
     k: {
       key: "k",
@@ -265,6 +297,7 @@ class KeyData {
       finger: "rightMiddle",
       shiftFinger: "",
       type: "alphabet",
+      keyboardRow: 3,
     },
     ",": {
       key: ",",
@@ -272,7 +305,8 @@ class KeyData {
       shiftKey: false,
       finger: "rightMiddle",
       shiftFinger: "",
-      type: "symbol",
+      type: "basic-symbol",
+      keyboardRow: 4,
     },
     o: {
       key: "o",
@@ -281,6 +315,7 @@ class KeyData {
       finger: "rightRing",
       shiftFinger: "",
       type: "alphabet",
+      keyboardRow: 2,
     },
     l: {
       key: "l",
@@ -289,6 +324,7 @@ class KeyData {
       finger: "rightRing",
       shiftFinger: "",
       type: "alphabet",
+      keyboardRow: 3,
     },
     ".": {
       key: ".",
@@ -296,7 +332,8 @@ class KeyData {
       shiftKey: false,
       finger: "rightRing",
       shiftFinger: "",
-      type: "symbol",
+      type: "basic-symbol",
+      keyboardRow: 4,
     },
     p: {
       key: "p",
@@ -305,6 +342,7 @@ class KeyData {
       finger: "rightLittle",
       shiftFinger: "",
       type: "alphabet",
+      keyboardRow: 2,
     },
     ";": {
       key: ";",
@@ -312,7 +350,8 @@ class KeyData {
       shiftKey: false,
       finger: "rightLittle",
       shiftFinger: "",
-      type: "symbol",
+      type: "basic-symbol",
+      keyboardRow: 3,
     },
     "/": {
       key: "/",
@@ -320,7 +359,8 @@ class KeyData {
       shiftKey: false,
       finger: "rightLittle",
       shiftFinger: "",
-      type: "symbol",
+      type: "basic-symbol",
+      keyboardRow: 4,
     },
     "!": {
       key: "!",
@@ -328,7 +368,8 @@ class KeyData {
       shiftKey: true,
       finger: "leftLittle",
       shiftFinger: "right",
-      type: "symbol",
+      type: "digit-symbol",
+      keyboardRow: 1,
     },
     Q: {
       key: "Q",
@@ -337,6 +378,7 @@ class KeyData {
       finger: "leftLittle",
       shiftFinger: "right",
       type: "ALPHABET",
+      keyboardRow: 2,
     },
     A: {
       key: "A",
@@ -345,6 +387,7 @@ class KeyData {
       finger: "leftLittle",
       shiftFinger: "right",
       type: "ALPHABET",
+      keyboardRow: 3,
     },
     Z: {
       key: "Z",
@@ -353,6 +396,7 @@ class KeyData {
       finger: "leftLittle",
       shiftFinger: "right",
       type: "ALPHABET",
+      keyboardRow: 4,
     },
     "@": {
       key: "@",
@@ -360,7 +404,8 @@ class KeyData {
       shiftKey: true,
       finger: "leftRing",
       shiftFinger: "right",
-      type: "symbol",
+      type: "digit-symbol",
+      keyboardRow: 1,
     },
     W: {
       key: "W",
@@ -369,6 +414,7 @@ class KeyData {
       finger: "leftRing",
       shiftFinger: "right",
       type: "ALPHABET",
+      keyboardRow: 2,
     },
     S: {
       key: "S",
@@ -377,6 +423,7 @@ class KeyData {
       finger: "leftRing",
       shiftFinger: "right",
       type: "ALPHABET",
+      keyboardRow: 3,
     },
     X: {
       key: "X",
@@ -385,6 +432,7 @@ class KeyData {
       finger: "leftRing",
       shiftFinger: "right",
       type: "ALPHABET",
+      keyboardRow: 4,
     },
     "#": {
       key: "#",
@@ -392,7 +440,8 @@ class KeyData {
       shiftKey: true,
       finger: "leftMiddle",
       shiftFinger: "right",
-      type: "symbol",
+      type: "digit-symbol",
+      keyboardRow: 1,
     },
     E: {
       key: "E",
@@ -401,6 +450,7 @@ class KeyData {
       finger: "leftMiddle",
       shiftFinger: "right",
       type: "ALPHABET",
+      keyboardRow: 2,
     },
     D: {
       key: "D",
@@ -409,6 +459,7 @@ class KeyData {
       finger: "leftMiddle",
       shiftFinger: "right",
       type: "ALPHABET",
+      keyboardRow: 3,
     },
     C: {
       key: "C",
@@ -417,6 +468,7 @@ class KeyData {
       finger: "leftMiddle",
       shiftFinger: "right",
       type: "ALPHABET",
+      keyboardRow: 4,
     },
     $: {
       key: "$",
@@ -424,7 +476,8 @@ class KeyData {
       shiftKey: true,
       finger: "leftIndex",
       shiftFinger: "right",
-      type: "symbol",
+      type: "digit-symbol",
+      keyboardRow: 1,
     },
     R: {
       key: "R",
@@ -433,6 +486,7 @@ class KeyData {
       finger: "leftIndex",
       shiftFinger: "right",
       type: "ALPHABET",
+      keyboardRow: 2,
     },
     F: {
       key: "F",
@@ -441,6 +495,7 @@ class KeyData {
       finger: "leftIndex",
       shiftFinger: "right",
       type: "ALPHABET",
+      keyboardRow: 3,
     },
     V: {
       key: "V",
@@ -449,6 +504,7 @@ class KeyData {
       finger: "leftIndex",
       shiftFinger: "right",
       type: "ALPHABET",
+      keyboardRow: 4,
     },
     "%": {
       key: "%",
@@ -456,7 +512,8 @@ class KeyData {
       shiftKey: true,
       finger: "leftIndex",
       shiftFinger: "right",
-      type: "symbol",
+      type: "digit-symbol",
+      keyboardRow: 1,
     },
     T: {
       key: "T",
@@ -465,6 +522,7 @@ class KeyData {
       finger: "leftIndex",
       shiftFinger: "right",
       type: "ALPHABET",
+      keyboardRow: 2,
     },
     G: {
       key: "G",
@@ -473,6 +531,7 @@ class KeyData {
       finger: "leftIndex",
       shiftFinger: "right",
       type: "ALPHABET",
+      keyboardRow: 3,
     },
     B: {
       key: "B",
@@ -481,6 +540,7 @@ class KeyData {
       finger: "leftIndex",
       shiftFinger: "right",
       type: "ALPHABET",
+      keyboardRow: 4,
     },
     "^": {
       key: "^",
@@ -488,7 +548,8 @@ class KeyData {
       shiftKey: true,
       finger: "rightIndex",
       shiftFinger: "left",
-      type: "symbol",
+      type: "digit-symbol",
+      keyboardRow: 1,
     },
     Y: {
       key: "Y",
@@ -497,6 +558,7 @@ class KeyData {
       finger: "rightIndex",
       shiftFinger: "left",
       type: "ALPHABET",
+      keyboardRow: 2,
     },
     H: {
       key: "H",
@@ -505,6 +567,7 @@ class KeyData {
       finger: "rightIndex",
       shiftFinger: "left",
       type: "ALPHABET",
+      keyboardRow: 3,
     },
     N: {
       key: "N",
@@ -513,6 +576,7 @@ class KeyData {
       finger: "rightIndex",
       shiftFinger: "left",
       type: "ALPHABET",
+      keyboardRow: 4,
     },
     "&": {
       key: "&",
@@ -520,7 +584,8 @@ class KeyData {
       shiftKey: true,
       finger: "rightIndex",
       shiftFinger: "left",
-      type: "symbol",
+      type: "digit-symbol",
+      keyboardRow: 1,
     },
     U: {
       key: "U",
@@ -529,6 +594,7 @@ class KeyData {
       finger: "rightIndex",
       shiftFinger: "left",
       type: "ALPHABET",
+      keyboardRow: 2,
     },
     J: {
       key: "J",
@@ -537,6 +603,7 @@ class KeyData {
       finger: "rightIndex",
       shiftFinger: "left",
       type: "ALPHABET",
+      keyboardRow: 3,
     },
     M: {
       key: "M",
@@ -545,6 +612,7 @@ class KeyData {
       finger: "rightIndex",
       shiftFinger: "left",
       type: "ALPHABET",
+      keyboardRow: 4,
     },
     "*": {
       key: "*",
@@ -552,7 +620,8 @@ class KeyData {
       shiftKey: true,
       finger: "rightMiddle",
       shiftFinger: "left",
-      type: "symbol",
+      type: "digit-symbol",
+      keyboardRow: 1,
     },
     I: {
       key: "I",
@@ -561,6 +630,7 @@ class KeyData {
       finger: "rightMiddle",
       shiftFinger: "left",
       type: "ALPHABET",
+      keyboardRow: 2,
     },
     K: {
       key: "K",
@@ -569,6 +639,7 @@ class KeyData {
       finger: "rightMiddle",
       shiftFinger: "left",
       type: "ALPHABET",
+      keyboardRow: 3,
     },
     "<": {
       key: "<",
@@ -576,7 +647,8 @@ class KeyData {
       shiftKey: true,
       finger: "rightMiddle",
       shiftFinger: "left",
-      type: "symbol",
+      type: "basic-symbol",
+      keyboardRow: 4,
     },
     "(": {
       key: "(",
@@ -584,7 +656,8 @@ class KeyData {
       shiftKey: true,
       finger: "rightRing",
       shiftFinger: "left",
-      type: "symbol",
+      type: "digit-symbol",
+      keyboardRow: 1,
     },
     O: {
       key: "O",
@@ -593,6 +666,7 @@ class KeyData {
       finger: "rightRing",
       shiftFinger: "left",
       type: "ALPHABET",
+      keyboardRow: 2,
     },
     L: {
       key: "L",
@@ -601,6 +675,7 @@ class KeyData {
       finger: "rightRing",
       shiftFinger: "left",
       type: "ALPHABET",
+      keyboardRow: 3,
     },
     ">": {
       key: ">",
@@ -608,7 +683,8 @@ class KeyData {
       shiftKey: true,
       finger: "rightRing",
       shiftFinger: "left",
-      type: "symbol",
+      type: "basic-symbol",
+      keyboardRow: 4,
     },
     ")": {
       key: ")",
@@ -616,7 +692,8 @@ class KeyData {
       shiftKey: true,
       finger: "rightLittle",
       shiftFinger: "left",
-      type: "symbol",
+      type: "digit-symbol",
+      keyboardRow: 1,
     },
     P: {
       key: "P",
@@ -625,6 +702,7 @@ class KeyData {
       finger: "rightLittle",
       shiftFinger: "left",
       type: "ALPHABET",
+      keyboardRow: 2,
     },
     ":": {
       key: ":",
@@ -632,7 +710,8 @@ class KeyData {
       shiftKey: true,
       finger: "rightLittle",
       shiftFinger: "left",
-      type: "symbol",
+      type: "basic-symbol",
+      keyboardRow: 3,
     },
     "?": {
       key: "?",
@@ -640,7 +719,134 @@ class KeyData {
       shiftKey: true,
       finger: "rightLittle",
       shiftFinger: "left",
-      type: "symbol",
+      type: "basic-symbol",
+      keyboardRow: 4,
+    },
+    "`": {
+      key: "`",
+      code: "Backquote",
+      shiftKey: false,
+      finger: "leftLittle",
+      shiftFinger: "",
+      type: "advance-symbol",
+      keyboardRow: 1,
+    },
+    "~": {
+      key: "~",
+      code: "Backquote",
+      shiftKey: true,
+      finger: "leftLittle",
+      shiftFinger: "right",
+      type: "advance-symbol",
+      keyboardRow: 1,
+    },
+    "-": {
+      key: "-",
+      code: "Minus",
+      shiftKey: false,
+      finger: "rightLittle",
+      shiftFinger: "",
+      type: "advance-symbol",
+      keyboardRow: 1,
+    },
+    "[": {
+      key: "[",
+      code: "BracketLeft",
+      shiftKey: false,
+      finger: "rightLittle",
+      shiftFinger: "",
+      type: "advance-symbol",
+      keyboardRow: 2,
+    },
+    "'": {
+      key: "'",
+      code: "Quote",
+      shiftKey: false,
+      finger: "rightLittle",
+      shiftFinger: "",
+      type: "advance-symbol",
+      keyboardRow: 3,
+    },
+    "=": {
+      key: "=",
+      code: "Equal",
+      shiftKey: false,
+      finger: "rightLittle",
+      shiftFinger: "",
+      type: "advance-symbol",
+      keyboardRow: 1,
+    },
+    "]": {
+      key: "]",
+      code: "BracketRight",
+      shiftKey: false,
+      finger: "rightLittle",
+      shiftFinger: "",
+      type: "advance-symbol",
+      keyboardRow: 2,
+    },
+    "\\": {
+      key: "\\",
+      code: "Backslash",
+      shiftKey: false,
+      finger: "rightLittle",
+      shiftFinger: "",
+      type: "advance-symbol",
+      keyboardRow: 2,
+    },
+    _: {
+      key: "_",
+      code: "Minus",
+      shiftKey: true,
+      finger: "rightLittle",
+      shiftFinger: "left",
+      type: "advance-symbol",
+      keyboardRow: 1,
+    },
+    "{": {
+      key: "{",
+      code: "BracketLeft",
+      shiftKey: true,
+      finger: "rightLittle",
+      shiftFinger: "left",
+      type: "advance-symbol",
+      keyboardRow: 2,
+    },
+    '"': {
+      key: '"',
+      code: "Quote",
+      shiftKey: true,
+      finger: "rightLittle",
+      shiftFinger: "left",
+      type: "advance-symbol",
+      keyboardRow: 3,
+    },
+    "+": {
+      key: "+",
+      code: "Equal",
+      shiftKey: true,
+      finger: "rightLittle",
+      shiftFinger: "left",
+      type: "advance-symbol",
+      keyboardRow: 1,
+    },
+    "}": {
+      key: "}",
+      code: "BracketRight",
+      shiftKey: true,
+      finger: "rightLittle",
+      shiftFinger: "left",
+      type: "advance-symbol",
+      keyboardRow: 2,
+    },
+    "|": {
+      key: "|",
+      code: "Backslash",
+      shiftKey: true,
+      finger: "rightLittle",
+      shiftFinger: "left",
+      type: "advance-symbol",
+      keyboardRow: 2,
     },
   });
 
@@ -720,6 +926,14 @@ class LetterGenerator {
         LetterGenerator.data[finger].push(key);
       }
     }
+
+    LetterGenerator.activeFingers = [];
+    for (let key in LetterGenerator.data) {
+      if (LetterGenerator.data[key].length) {
+        const typedKey = /** @type {LetterGeneratorDataKey} */ (/** @type {unknown} */ key);
+        LetterGenerator.activeFingers.push(typedKey);
+      }
+    }
   }
 
   /**
@@ -791,9 +1005,10 @@ class NumericalSetting {
    * @typedef {(keyof NumericalSetting.data)} NumericalSettingDataKey
    */
   static data = {
-    "letter-div-height": 100,
-    "letter-speed": 100,
     kpm: 100,
+    "letter-speed": 100,
+    "letter-div-height": 100,
+    "perfect-height": 300,
   };
 
   /**
@@ -801,9 +1016,10 @@ class NumericalSetting {
    * @type {{[key in NumericalSettingDataKey]: {step: number, min: number, max: number}}}
    */
   static dataSetting = Object.freeze({
-    "letter-div-height": { step: 50, min: 50, max: 300 },
-    "letter-speed": { step: 50, min: 50, max: 300 },
     kpm: { step: 5, min: 1, max: 1000 },
+    "letter-speed": { step: 50, min: 50, max: 300 },
+    "letter-div-height": { step: 50, min: 50, max: 300 },
+    "perfect-height": { step: 100, min: 100, max: 500 },
   });
 
   /**
@@ -818,6 +1034,7 @@ class NumericalSetting {
     const handlePlusBtnClick = this.handlePlusBtnClick.bind(this);
     const handleMinusBtnClick = this.handleMinusBtnClick.bind(this);
     const getInputValue = this.getInputValue.bind(this);
+    const perfectHeightSideEffect = this.perfectHeightSideEffect.bind(this);
 
     for (let dataKey in NumericalSetting.data) {
       /** @type {(NumericalSettingDataKey)}*/
@@ -832,6 +1049,10 @@ class NumericalSetting {
 
       NumericalSetting.$inputs[dataKey] = $container.find("input");
       NumericalSetting.$inputs[dataKey].val(NumericalSetting.data[dataKey].toString());
+
+      if (dataKey === "perfect-height") {
+        perfectHeightSideEffect();
+      }
 
       const { step, min, max } = NumericalSetting.dataSetting[dataKey];
       NumericalSetting.$inputs[dataKey].attr("min", min.toString());
@@ -864,8 +1085,8 @@ class NumericalSetting {
     NumericalSetting.data[dataKey] = this.validateMinMax(dataKey, newNumber);
     NumericalSetting.$inputs[dataKey].val(NumericalSetting.data[dataKey].toString());
 
-    if (dataKey === "letter-div-height") {
-      this.letterDivHeightSizeEffect();
+    if (dataKey === "perfect-height") {
+      this.perfectHeightSideEffect();
     }
   }
 
@@ -897,8 +1118,8 @@ class NumericalSetting {
    * @private
    * @return {void}
    */
-  letterDivHeightSizeEffect() {
-    $("#finish-line").css("height", `${NumericalSetting.data["letter-div-height"]}px`);
+  perfectHeightSideEffect() {
+    $("#perfect-line").css("height", `${NumericalSetting.data["perfect-height"]}px`);
   }
 
   /**
@@ -1042,18 +1263,55 @@ class StatisticsTable {
 class CharacterSet {
   /**
    * @private
-   * @typedef {(keyof CharacterSet.setting)} CharacterSetSettingKey
+   * @typedef {(keyof CharacterSet.characterSetSetting)} CharacterSetSettingKey
    */
-  static setting = {
-    symbol: true,
-    digit: true,
-    ALPHABET: true,
+  static characterSetSetting = {
     alphabet: true,
+    ALPHABET: true,
+    digit: true,
+    symbol: true,
+    "basic-symbol": true,
+    "digit-symbol": true,
+    "advance-symbol": true,
   };
 
   /** @type {{[key in CharacterSetSettingKey]: JQuery<HTMLElement>}} */
   // @ts-ignore
-  static $switches = {};
+  static $characterSetCheckboxes = {};
+
+  /**
+   * @private
+   * @typedef {(keyof CharacterSet.fingerSetSetting)} FingerSetSettingKey
+   */
+  static fingerSetSetting = {
+    leftLittle: true,
+    leftRing: true,
+    leftMiddle: true,
+    leftIndex: true,
+    rightIndex: true,
+    rightMiddle: true,
+    rightRing: true,
+    rightLittle: true,
+  };
+
+  /** @type {{[key in FingerSetSettingKey]: JQuery<HTMLElement>}} */
+  // @ts-ignore
+  static $fingerSetCheckboxes = {};
+
+  /**
+   * @private
+   * @typedef {(keyof CharacterSet.keyboardRowSetSetting)} KeyboardRowSetSettingKey
+   */
+  static keyboardRowSetSetting = {
+    keyboardRow_1: true,
+    keyboardRow_2: true,
+    keyboardRow_3: true,
+    keyboardRow_4: true,
+  };
+
+  /** @type {{[key in KeyboardRowSetSettingKey]: JQuery<HTMLElement>}} */
+  // @ts-ignore
+  static $keyboardRowSetCheckboxes = {};
 
   /** @type {Record<string, JQuery<HTMLElement>>} */
   static $keys = {};
@@ -1070,15 +1328,37 @@ class CharacterSet {
   constructor(letterGenerator) {
     this.letterGenerator = letterGenerator;
 
-    const toggleSetting = this.toggleSetting.bind(this);
+    const toggleCharacterSetSetting = this.toggleCharacterSetSetting.bind(this);
+    const toggleFingerSetSetting = this.toggleFingerSetSetting.bind(this);
+    const toggleKeyboardRowSetSetting = this.toggleKeyboardRowSetSetting.bind(this);
 
-    for (let dataKey in CharacterSet.setting) {
+    for (let dataKey in CharacterSet.characterSetSetting) {
       /** @type {(CharacterSetSettingKey)}*/
       const typedDataKey = /** @type {CharacterSetSettingKey} */ (/** @type {unknown} */ (dataKey));
-      CharacterSet.$switches[typedDataKey] = $(`#character-setting-table tr[data-binding=${typedDataKey}] input`);
-      CharacterSet.$switches[typedDataKey].prop("checked", CharacterSet.setting[typedDataKey]);
-      CharacterSet.$switches[typedDataKey].on("change", function () {
-        toggleSetting(typedDataKey);
+      CharacterSet.$characterSetCheckboxes[typedDataKey] = $(`#character-set-ul div[data-binding=${typedDataKey}] input`);
+      CharacterSet.$characterSetCheckboxes[typedDataKey].prop("checked", CharacterSet.characterSetSetting[typedDataKey]);
+      CharacterSet.$characterSetCheckboxes[typedDataKey].on("change", function () {
+        toggleCharacterSetSetting(typedDataKey);
+      });
+    }
+
+    for (let dataKey in CharacterSet.fingerSetSetting) {
+      /** @type {(FingerSetSettingKey)}*/
+      const typedDataKey = /** @type {FingerSetSettingKey} */ (/** @type {unknown} */ (dataKey));
+      CharacterSet.$fingerSetCheckboxes[typedDataKey] = $(`#finger-set-ul div[data-binding=${typedDataKey}] input`);
+      CharacterSet.$fingerSetCheckboxes[typedDataKey].prop("checked", CharacterSet.fingerSetSetting[typedDataKey]);
+      CharacterSet.$fingerSetCheckboxes[typedDataKey].on("change", function () {
+        toggleFingerSetSetting(typedDataKey);
+      });
+    }
+
+    for (let dataKey in CharacterSet.keyboardRowSetSetting) {
+      /** @type {(FingerSetSettingKey)}*/
+      const typedDataKey = /** @type {FingerSetSettingKey} */ (/** @type {unknown} */ (dataKey));
+      CharacterSet.$keyboardRowSetCheckboxes[typedDataKey] = $(`#keyboard-row-set-ul div[data-binding=${typedDataKey}] input`);
+      CharacterSet.$keyboardRowSetCheckboxes[typedDataKey].prop("checked", CharacterSet.keyboardRowSetSetting[typedDataKey]);
+      CharacterSet.$keyboardRowSetCheckboxes[typedDataKey].on("change", function () {
+        toggleKeyboardRowSetSetting(typedDataKey);
       });
     }
 
@@ -1094,8 +1374,8 @@ class CharacterSet {
    * @param {CharacterSetSettingKey} dataKey
    * @return {boolean}
    */
-  getSetting(dataKey) {
-    return CharacterSet.setting[dataKey];
+  getCharacterSetSetting(dataKey) {
+    return CharacterSet.characterSetSetting[dataKey];
   }
 
   /**
@@ -1104,27 +1384,41 @@ class CharacterSet {
    * @param {boolean} checked
    * @return {void}
    */
-  setSetting(dataKey, checked) {
-    CharacterSet.setting[dataKey] = checked;
-    CharacterSet.$switches[dataKey].prop("checked", checked);
+  setCharacterSetSetting(dataKey, checked) {
+    switch (dataKey) {
+      case "symbol":
+        const allRelatedDataKeys = ["symbol", "basic-symbol", "digit-symbol", "advance-symbol"];
+        for (let relatedDataKey of allRelatedDataKeys) {
+          CharacterSet.characterSetSetting[relatedDataKey] = checked;
+          CharacterSet.$characterSetCheckboxes[relatedDataKey].prop("checked", checked);
+        }
+        break;
+      case "basic-symbol":
+      case "digit-symbol":
+      case "advance-symbol":
+        CharacterSet.characterSetSetting[dataKey] = checked;
+        CharacterSet.$characterSetCheckboxes[dataKey].prop("checked", checked);
 
-    /** @type {Record<string, boolean>} */
-    const newAvailableCharacters = {};
-    for (let key in KeyData.data) {
-      if (CharacterSet.setting[KeyData.data[key].type]) {
-        newAvailableCharacters[key] = true;
-
-        // todo
-        console.log("here");
-        CharacterSet.$keys[key]?.removeClass("exclude");
-      } else {
-        newAvailableCharacters[key] = false;
-
-        // todo
-        CharacterSet.$keys[key]?.addClass("exclude");
-      }
+        if (CharacterSet.characterSetSetting["basic-symbol"] && CharacterSet.characterSetSetting["digit-symbol"] && CharacterSet.characterSetSetting["advance-symbol"]) {
+          CharacterSet.characterSetSetting["symbol"] = true;
+          CharacterSet.$characterSetCheckboxes["symbol"].prop("checked", true);
+          CharacterSet.$characterSetCheckboxes["symbol"].prop("indeterminate", false);
+        } else if (CharacterSet.characterSetSetting["basic-symbol"] || CharacterSet.characterSetSetting["digit-symbol"] || CharacterSet.characterSetSetting["advance-symbol"]) {
+          CharacterSet.characterSetSetting["symbol"] = true;
+          CharacterSet.$characterSetCheckboxes["symbol"].prop("checked", true);
+          CharacterSet.$characterSetCheckboxes["symbol"].prop("indeterminate", true);
+        } else if (!CharacterSet.characterSetSetting["basic-symbol"] && !CharacterSet.characterSetSetting["digit-symbol"] && !CharacterSet.characterSetSetting["advance-symbol"]) {
+          CharacterSet.characterSetSetting["symbol"] = false;
+          CharacterSet.$characterSetCheckboxes["symbol"].prop("checked", false);
+          CharacterSet.$characterSetCheckboxes["symbol"].prop("indeterminate", false);
+        }
+        break;
+      default:
+        CharacterSet.characterSetSetting[dataKey] = checked;
+        CharacterSet.$characterSetCheckboxes[dataKey].prop("checked", checked);
+        break;
     }
-
+    const newAvailableCharacters = this.generateAvailableCharacters();
     this.letterGenerator.updateData(newAvailableCharacters);
   }
 
@@ -1133,8 +1427,93 @@ class CharacterSet {
    * @param {CharacterSetSettingKey} dataKey
    * @return {void}
    */
-  toggleSetting(dataKey) {
-    this.setSetting(dataKey, !CharacterSet.setting[dataKey]);
+  toggleCharacterSetSetting(dataKey) {
+    this.setCharacterSetSetting(dataKey, !CharacterSet.characterSetSetting[dataKey]);
+  }
+
+  /**
+   * @public
+   * @param {FingerSetSettingKey} dataKey
+   * @return {boolean}
+   */
+  getFingerSetSetting(dataKey) {
+    return CharacterSet.fingerSetSetting[dataKey];
+  }
+
+  /**
+   * @private
+   * @param {FingerSetSettingKey} dataKey
+   * @param {boolean} checked
+   * @return {void}
+   */
+  setFingerSetSetting(dataKey, checked) {
+    CharacterSet.fingerSetSetting[dataKey] = checked;
+    CharacterSet.$fingerSetCheckboxes[dataKey].prop("checked", checked);
+    const newAvailableCharacters = this.generateAvailableCharacters();
+    this.letterGenerator.updateData(newAvailableCharacters);
+  }
+
+  /**
+   * @private
+   * @param {FingerSetSettingKey} dataKey
+   * @return {void}
+   */
+  toggleFingerSetSetting(dataKey) {
+    this.setFingerSetSetting(dataKey, !CharacterSet.fingerSetSetting[dataKey]);
+  }
+
+  /**
+   * @public
+   * @param {KeyboardRowSetSettingKey} dataKey
+   * @return {boolean}
+   */
+  getKeyboardRowSetSetting(dataKey) {
+    return CharacterSet.keyboardRowSetSetting[dataKey];
+  }
+
+  /**
+   * @private
+   * @param {KeyboardRowSetSettingKey} dataKey
+   * @param {boolean} checked
+   * @return {void}
+   */
+  setKeyboardRowSetSetting(dataKey, checked) {
+    CharacterSet.keyboardRowSetSetting[dataKey] = checked;
+    CharacterSet.$keyboardRowSetCheckboxes[dataKey].prop("checked", checked);
+    const newAvailableCharacters = this.generateAvailableCharacters();
+    this.letterGenerator.updateData(newAvailableCharacters);
+  }
+
+  /**
+   * @private
+   * @param {KeyboardRowSetSettingKey} dataKey
+   * @return {void}
+   */
+  toggleKeyboardRowSetSetting(dataKey) {
+    this.setKeyboardRowSetSetting(dataKey, !CharacterSet.keyboardRowSetSetting[dataKey]);
+  }
+
+  /**
+   * @private
+   * @return {Record<string, boolean>}
+   */
+  generateAvailableCharacters() {
+    /** @type{Record<string, boolean>} */
+    const newAvailableCharacters = {};
+    for (let key in KeyData.data) {
+      if (
+        CharacterSet.characterSetSetting[KeyData.data[key].type] &&
+        CharacterSet.fingerSetSetting[KeyData.data[key].finger] &&
+        CharacterSet.keyboardRowSetSetting["keyboardRow_" + KeyData.data[key].keyboardRow]
+      ) {
+        newAvailableCharacters[key] = true;
+        CharacterSet.$keys[key]?.removeClass("exclude");
+      } else {
+        newAvailableCharacters[key] = false;
+        CharacterSet.$keys[key]?.addClass("exclude");
+      }
+    }
+    return newAvailableCharacters;
   }
 }
 
@@ -1227,10 +1606,11 @@ class Game {
     const kpm = this.numericalSetting.getData("kpm");
     const letterSpeed = this.numericalSetting.getData("letter-speed");
     const letterDivHeight = this.numericalSetting.getData("letter-div-height");
+    const perfectHeight = this.numericalSetting.getData("perfect-height");
 
     const timeInterval = (1 / (kpm / 60)) * 1000;
     /**@type {[number, number]} */
-    const perfectRange = [trackHeight - 2 * letterDivHeight, trackHeight - letterDivHeight];
+    const perfectRange = [0, trackHeight - perfectHeight];
 
     Game.intervalId = window.setInterval(() => {
       const newLetter = this.generateNewLetterElement(letterDivHeight, Game.letterIdx++);
@@ -1310,7 +1690,9 @@ class Game {
   toggleInputAndButtonWhenStartOrStop(type) {
     const bool = type === "start" ? true : false;
 
-    bool ? this.numericalSetting.disableInputs(["kpm", "letter-speed", "letter-div-height"]) : this.numericalSetting.enableInputs(["kpm", "letter-speed", "letter-div-height"]);
+    /** @type {NumericalSettingDataKey[]} */
+    const settingArr = ["kpm", "letter-speed", "letter-div-height", "perfect-height"];
+    bool ? this.numericalSetting.disableInputs(settingArr) : this.numericalSetting.enableInputs(settingArr);
     $("#check-left-right-shift-setting-container input").prop("disabled", bool);
     $("#start-practice-btn").prop("disabled", bool);
     $("#stop-practice-btn").prop("disabled", !bool);
@@ -1498,7 +1880,7 @@ $(function () {
     }
   });
 
-  $("#exampleModal").modal("show");
+  // $("#characterSetModal").modal("show");
 
   $(".keyboard-base .key").each(function () {
     const $this = $(this);
@@ -1515,14 +1897,14 @@ $(function () {
 // let debugData = {};
 
 // const lettersForEachFingerDebug = Object.freeze({
-//     leftLittle: ["1", "q", "a", "z", "!", "Q", "A", "Z"],
-//     leftRing: ["2", "w", "s", "x", "@", "W", "S", "X"],
-//     leftMiddle: ["3", "e", "d", "c", "#", "E", "D", "C"],
-//     leftIndex: ["4", "r", "f", "v", "5", "t", "g", "b", "$", "R", "F", "V", "%", "T", "G", "B"],
-//     rightIndex: ["6", "y", "h", "n", "7", "u", "j", "m", "^", "Y", "H", "N", "&", "U", "J", "M"],
-//     rightMiddle: ["8", "i", "k", ",", "*", "I", "K", "<"],
-//     rightRing: ["9", "o", "l", ".", "(", "O", "L", ">"],
-//     rightLittle: ["0", "p", ";", "/", ")", "P", ":", "?"],
+//   leftLittle: ["1", "q", "a", "z", "!", "Q", "A", "Z", "`", "~"],
+//   leftRing: ["2", "w", "s", "x", "@", "W", "S", "X"],
+//   leftMiddle: ["3", "e", "d", "c", "#", "E", "D", "C"],
+//   leftIndex: ["4", "r", "f", "v", "5", "t", "g", "b", "$", "R", "F", "V", "%", "T", "G", "B"],
+//   rightIndex: ["6", "y", "h", "n", "7", "u", "j", "m", "^", "Y", "H", "N", "&", "U", "J", "M"],
+//   rightMiddle: ["8", "i", "k", ",", "*", "I", "K", "<"],
+//   rightRing: ["9", "o", "l", ".", "(", "O", "L", ">"],
+//   rightLittle: ["0", "p", ";", "/", ")", "P", ":", "?", "-", "[", "'", "=", "]", "\\", "_", "{", '"', "+", "}", "|"],
 // });
 
 // /**
@@ -1531,23 +1913,21 @@ $(function () {
 //  * @returns {string}
 //  */
 // function generateFinger(key) {
-//     const finger = Object.keys(lettersForEachFingerDebug).find((finger) =>
-//         lettersForEachFingerDebug[finger].includes(key)
-//     );
-//     return finger ?? "no-data";
+//   const finger = Object.keys(lettersForEachFingerDebug).find((finger) => lettersForEachFingerDebug[finger].includes(key));
+//   return finger ?? "no-data";
 // }
 
 // $(document).on("keyup", function (e) {
-//     console.log(e.key);
-//     console.log(e);
-//     const obj = {
-//         key: e.key,
-//         code: e.code,
-//         shiftKey: e.shiftKey,
-//         finger: generateFinger(e.key),
-//         shiftFinger: e.shiftKey ? (generateFinger(e.key).includes("left") ? "left" : "right") : "",
-//     };
-//     debugData[e.key] = obj;
+//   console.log(e.key);
+//   console.log(e);
+//   const obj = {
+//     key: e.key,
+//     code: e.code,
+//     shiftKey: e.shiftKey,
+//     finger: generateFinger(e.key),
+//     shiftFinger: e.shiftKey ? (generateFinger(e.key).includes("left") ? "right" : "left") : "",
+//   };
+//   debugData[e.key] = obj;
 // });
 
 // let all = Object.values(KeyData.data);
