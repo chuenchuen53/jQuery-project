@@ -853,7 +853,6 @@ class KeyData {
   constructor() {}
 
   /**
-   *
    * @param {string} key
    * @returns {string}
    */
@@ -868,6 +867,7 @@ class LetterGenerator {
   /**
    * @private
    * @typedef {"leftLittle" | "leftRing" | "leftMiddle" | "leftIndex" | "rightIndex" | "rightMiddle" | "rightRing" | "rightLittle"} LetterGeneratorDataKey
+   *
    * @typedef {Record<LetterGeneratorDataKey, string[]>} LetterGeneratorData
    * @type {LetterGeneratorData}
    */
@@ -892,26 +892,26 @@ class LetterGenerator {
   }
 
   /**
+   * @returns {Readonly<LetterGeneratorData>}
    * @public
-   * @return {Readonly<LetterGeneratorData>}
    */
   getAllDate() {
     return this.cloneReadonlyObject(LetterGenerator.data);
   }
 
   /**
-   * @public
    * @param {LetterGeneratorDataKey} dataKey
-   * @return {readonly string[]}
+   * @returns {readonly string[]}
+   * @public
    */
   getOneFingerDate(dataKey) {
     return this.cloneReadonlyObject(LetterGenerator.data[dataKey]);
   }
 
   /**
-   * @public
    * @param {Record<string, boolean>} newAvailableLetters
-   * @return {void}
+   * @returns {void}
+   * @public
    */
   updateData(newAvailableLetters) {
     for (let key in newAvailableLetters) {
@@ -937,9 +937,9 @@ class LetterGenerator {
   }
 
   /**
-   * @public
    * @param {number} numberOfLetters
-   * @returns {{finger: LetterGeneratorDataKey, letter: string}[]}
+   * @returns {{ finger: LetterGeneratorDataKey; letter: string }[]}
+   * @public
    */
   generateRandomLetter(numberOfLetters) {
     const letters = [];
@@ -953,7 +953,7 @@ class LetterGenerator {
    * @private
    * @template T
    * @param {T} obj
-   * @return {T}
+   * @returns {T}
    */
   cloneObject(obj) {
     const objClone = JSON.parse(JSON.stringify(obj));
@@ -964,7 +964,7 @@ class LetterGenerator {
    * @private
    * @template T
    * @param {T} obj
-   * @return {Readonly<T>}
+   * @returns {Readonly<T>}
    */
   cloneReadonlyObject(obj) {
     const objClone = Object.freeze(this.cloneObject(obj));
@@ -990,7 +990,7 @@ class LetterGenerator {
 
   /**
    * @private
-   * @returns {{finger: LetterGeneratorDataKey, letter: string}}
+   * @returns {{ finger: LetterGeneratorDataKey; letter: string }}
    */
   static randomLetter() {
     const finger = LetterGenerator.randomFinger();
@@ -1002,29 +1002,29 @@ class LetterGenerator {
 class NumericalSetting {
   /**
    * @private
-   * @typedef {(keyof NumericalSetting.data)} NumericalSettingDataKey
+   * @typedef {keyof NumericalSetting.data} NumericalSettingDataKey
    */
   static data = {
     kpm: 100,
-    "letter-speed": 100,
-    "letter-div-height": 100,
-    "perfect-height": 300,
+    letterSpeed: 100,
+    letterDivHeight: 100,
+    perfectHeight: 300,
   };
 
   /**
    * @private
-   * @type {{[key in NumericalSettingDataKey]: {step: number, min: number, max: number}}}
+   * @type {{ [key in NumericalSettingDataKey]: { step: number; min: number; max: number } }}
    */
   static dataSetting = Object.freeze({
     kpm: { step: 5, min: 1, max: 1000 },
-    "letter-speed": { step: 50, min: 50, max: 300 },
-    "letter-div-height": { step: 50, min: 50, max: 300 },
-    "perfect-height": { step: 100, min: 100, max: 500 },
+    letterSpeed: { step: 50, min: 50, max: 300 },
+    letterDivHeight: { step: 50, min: 50, max: 300 },
+    perfectHeight: { step: 100, min: 100, max: 500 },
   });
 
   /**
    * @private
-   * @type {{[key in NumericalSettingDataKey]: JQuery<HTMLElement>}}
+   * @type {{ [key in NumericalSettingDataKey]: JQuery<HTMLElement> }}
    */
   // @ts-ignore
   static $inputs = {};
@@ -1037,7 +1037,7 @@ class NumericalSetting {
     const perfectHeightSideEffect = this.perfectHeightSideEffect.bind(this);
 
     for (let dataKey in NumericalSetting.data) {
-      /** @type {(NumericalSettingDataKey)}*/
+      /** @type {NumericalSettingDataKey} */
       const typedDataKey = /** @type {NumericalSettingDataKey} */ (/** @type {unknown} */ (dataKey));
       const $container = $(`.numerical-setting-container[data-binding=${dataKey}]`);
       $container.find("button[action=increase]").on("click", function () {
@@ -1050,7 +1050,7 @@ class NumericalSetting {
       NumericalSetting.$inputs[dataKey] = $container.find("input");
       NumericalSetting.$inputs[dataKey].val(NumericalSetting.data[dataKey].toString());
 
-      if (dataKey === "perfect-height") {
+      if (typedDataKey === "perfectHeight") {
         perfectHeightSideEffect();
       }
 
@@ -1067,33 +1067,33 @@ class NumericalSetting {
   }
 
   /**
+   * @param {NumericalSettingDataKey} dataKey
+   * @returns {number}
    * @public
-   * @param {(NumericalSettingDataKey)} dataKey
-   * @return {number}
    */
   getData(dataKey) {
     return NumericalSetting.data[dataKey];
   }
 
   /**
-   * @public
-   * @param {(NumericalSettingDataKey)} dataKey
+   * @param {NumericalSettingDataKey} dataKey
    * @param {number} newNumber
-   * @return {void}
+   * @returns {void}
+   * @public
    */
   setData(dataKey, newNumber) {
     NumericalSetting.data[dataKey] = this.validateMinMax(dataKey, newNumber);
     NumericalSetting.$inputs[dataKey].val(NumericalSetting.data[dataKey].toString());
 
-    if (dataKey === "perfect-height") {
+    if (dataKey === "perfectHeight") {
       this.perfectHeightSideEffect();
     }
   }
 
   /**
-   * @public
    * @param {NumericalSettingDataKey[]} dataKeys
-   * @return {void}
+   * @returns {void}
+   * @public
    */
   enableInputs(dataKeys) {
     for (let dataKey of dataKeys) {
@@ -1103,9 +1103,9 @@ class NumericalSetting {
   }
 
   /**
-   * @public
    * @param {NumericalSettingDataKey[]} dataKeys
-   * @return {void}
+   * @returns {void}
+   * @public
    */
   disableInputs(dataKeys) {
     for (let dataKey of dataKeys) {
@@ -1116,16 +1116,16 @@ class NumericalSetting {
 
   /**
    * @private
-   * @return {void}
+   * @returns {void}
    */
   perfectHeightSideEffect() {
-    $("#perfect-line").css("height", `${NumericalSetting.data["perfect-height"]}px`);
+    $("#perfect-line").css("height", `${NumericalSetting.data.perfectHeight}px`);
   }
 
   /**
    * @private
    * @param {any} inputValue
-   * @return {number}
+   * @returns {number}
    */
   getInputValue(inputValue) {
     if (typeof inputValue === "number") {
@@ -1143,9 +1143,9 @@ class NumericalSetting {
 
   /**
    * @private
-   * @param {(NumericalSettingDataKey)} dataKey
+   * @param {NumericalSettingDataKey} dataKey
    * @param {number} newNumber
-   * @return {number}
+   * @returns {number}
    */
   validateMinMax(dataKey, newNumber) {
     const { min, max } = NumericalSetting.dataSetting[dataKey];
@@ -1160,8 +1160,8 @@ class NumericalSetting {
 
   /**
    * @private
-   * @param {(NumericalSettingDataKey)} dataKey
-   * @return {void}
+   * @param {NumericalSettingDataKey} dataKey
+   * @returns {void}
    */
   handlePlusBtnClick(dataKey) {
     const newNumber = NumericalSetting.data[dataKey] + NumericalSetting.dataSetting[dataKey].step;
@@ -1170,8 +1170,8 @@ class NumericalSetting {
 
   /**
    * @private
-   * @param {(NumericalSettingDataKey)} dataKey
-   * @return {void}
+   * @param {NumericalSettingDataKey} dataKey
+   * @returns {void}
    */
   handleMinusBtnClick(dataKey) {
     const newNumber = NumericalSetting.data[dataKey] - NumericalSetting.dataSetting[dataKey].step;
@@ -1182,25 +1182,23 @@ class NumericalSetting {
 class StatisticsTable {
   /**
    * @private
-   * @typedef {(keyof StatisticsTable.data)} StatisticsTableDataKey
+   * @typedef {keyof StatisticsTable.data} StatisticsTableDataKey
    */
   static data = {
-    "perfect-count": 0,
-    "good-count": 0,
-    "miss-count": 0,
-    "combo-count": 0,
-    "max-combo-count": 0,
+    perfectCount: 0,
+    goodCount: 0,
+    missCount: 0,
+    comboCount: 0,
+    maxComboCount: 0,
   };
 
-  /**
-   * @type {{[key in StatisticsTableDataKey]: JQuery<HTMLElement>}}
-   */
+  /** @type {{ [key in StatisticsTableDataKey]: JQuery<HTMLElement> }} */
   // @ts-ignore
   static $tableCell = {};
 
   constructor() {
     for (let dataKey in StatisticsTable.data) {
-      /** @type {(StatisticsTableDataKey)}*/
+      /** @type {StatisticsTableDataKey} */
       const typedDataKey = /** @type {StatisticsTableDataKey} */ (/** @type {unknown} */ (dataKey));
       StatisticsTable.$tableCell[typedDataKey] = $(`#game-statistics-container tbody tr td[data-binding=${dataKey}]`);
       StatisticsTable.$tableCell[typedDataKey].text(StatisticsTable.data[dataKey].toString());
@@ -1208,17 +1206,18 @@ class StatisticsTable {
   }
 
   /**
+   * @param {StatisticsTableDataKey} dataKey
+   * @returns {number}
    * @public
-   * @param {(StatisticsTableDataKey)} dataKey
    */
   getData(dataKey) {
     return StatisticsTable.data[dataKey];
   }
 
   /**
-   * @public
    * @param {StatisticsTableDataKey} dataKey
-   * @return {void}
+   * @returns {void}
+   * @public
    */
   addData(dataKey) {
     const newNumber = StatisticsTable.data[dataKey] + 1;
@@ -1226,9 +1225,9 @@ class StatisticsTable {
   }
 
   /**
-   * @public
    * @param {StatisticsTableDataKey} dataKey
-   * @return {void}
+   * @returns {void}
+   * @public
    */
   resetData(dataKey) {
     this.setData(dataKey, 0);
@@ -1236,11 +1235,11 @@ class StatisticsTable {
 
   /**
    * @private
-   * @return {void}
+   * @returns {void}
    */
   sideEffectForSettingCombo() {
-    if (StatisticsTable.data["combo-count"] > StatisticsTable.data["max-combo-count"]) {
-      this.setData("max-combo-count", StatisticsTable.data["combo-count"]);
+    if (StatisticsTable.data.comboCount > StatisticsTable.data.maxComboCount) {
+      this.setData("maxComboCount", StatisticsTable.data.comboCount);
     }
   }
 
@@ -1248,13 +1247,13 @@ class StatisticsTable {
    * @private
    * @param {StatisticsTableDataKey} dataKey
    * @param {number} newNumber
-   * @return {void}
+   * @returns {void}
    */
   setData(dataKey, newNumber) {
     StatisticsTable.data[dataKey] = newNumber;
     StatisticsTable.$tableCell[dataKey].text(StatisticsTable.data[dataKey].toString());
 
-    if (dataKey === "combo-count") {
+    if (dataKey === "comboCount") {
       this.sideEffectForSettingCombo();
     }
   }
@@ -1263,25 +1262,25 @@ class StatisticsTable {
 class CharacterSet {
   /**
    * @private
-   * @typedef {(keyof CharacterSet.characterSetSetting)} CharacterSetSettingKey
+   * @typedef {keyof CharacterSet.characterSetSetting} CharacterSetSettingKey
    */
   static characterSetSetting = {
     alphabet: true,
     ALPHABET: true,
     digit: true,
     symbol: true,
-    "basic-symbol": true,
-    "digit-symbol": true,
-    "advance-symbol": true,
+    basicSymbol: true,
+    digitSymbol: true,
+    advanceSymbol: true,
   };
 
-  /** @type {{[key in CharacterSetSettingKey]: JQuery<HTMLElement>}} */
+  /** @type {{ [key in CharacterSetSettingKey]: JQuery<HTMLElement> }} */
   // @ts-ignore
   static $characterSetCheckboxes = {};
 
   /**
    * @private
-   * @typedef {(keyof CharacterSet.fingerSetSetting)} FingerSetSettingKey
+   * @typedef {keyof CharacterSet.fingerSetSetting} FingerSetSettingKey
    */
   static fingerSetSetting = {
     leftLittle: true,
@@ -1294,13 +1293,13 @@ class CharacterSet {
     rightLittle: true,
   };
 
-  /** @type {{[key in FingerSetSettingKey]: JQuery<HTMLElement>}} */
+  /** @type {{ [key in FingerSetSettingKey]: JQuery<HTMLElement> }} */
   // @ts-ignore
   static $fingerSetCheckboxes = {};
 
   /**
    * @private
-   * @typedef {(keyof CharacterSet.keyboardRowSetSetting)} KeyboardRowSetSettingKey
+   * @typedef {keyof CharacterSet.keyboardRowSetSetting} KeyboardRowSetSettingKey
    */
   static keyboardRowSetSetting = {
     keyboardRow_1: true,
@@ -1309,7 +1308,7 @@ class CharacterSet {
     keyboardRow_4: true,
   };
 
-  /** @type {{[key in KeyboardRowSetSettingKey]: JQuery<HTMLElement>}} */
+  /** @type {{ [key in KeyboardRowSetSettingKey]: JQuery<HTMLElement> }} */
   // @ts-ignore
   static $keyboardRowSetCheckboxes = {};
 
@@ -1322,9 +1321,7 @@ class CharacterSet {
    */
   letterGenerator;
 
-  /**
-   * @param {LetterGenerator} letterGenerator
-   */
+  /** @param {LetterGenerator} letterGenerator */
   constructor(letterGenerator) {
     this.letterGenerator = letterGenerator;
 
@@ -1333,7 +1330,7 @@ class CharacterSet {
     const toggleKeyboardRowSetSetting = this.toggleKeyboardRowSetSetting.bind(this);
 
     for (let dataKey in CharacterSet.characterSetSetting) {
-      /** @type {(CharacterSetSettingKey)}*/
+      /** @type {CharacterSetSettingKey} */
       const typedDataKey = /** @type {CharacterSetSettingKey} */ (/** @type {unknown} */ (dataKey));
       CharacterSet.$characterSetCheckboxes[typedDataKey] = $(`#character-set-ul div[data-binding=${typedDataKey}] input`);
       CharacterSet.$characterSetCheckboxes[typedDataKey].prop("checked", CharacterSet.characterSetSetting[typedDataKey]);
@@ -1343,7 +1340,7 @@ class CharacterSet {
     }
 
     for (let dataKey in CharacterSet.fingerSetSetting) {
-      /** @type {(FingerSetSettingKey)}*/
+      /** @type {FingerSetSettingKey} */
       const typedDataKey = /** @type {FingerSetSettingKey} */ (/** @type {unknown} */ (dataKey));
       CharacterSet.$fingerSetCheckboxes[typedDataKey] = $(`#finger-set-ul div[data-binding=${typedDataKey}] input`);
       CharacterSet.$fingerSetCheckboxes[typedDataKey].prop("checked", CharacterSet.fingerSetSetting[typedDataKey]);
@@ -1353,7 +1350,7 @@ class CharacterSet {
     }
 
     for (let dataKey in CharacterSet.keyboardRowSetSetting) {
-      /** @type {(FingerSetSettingKey)}*/
+      /** @type {FingerSetSettingKey} */
       const typedDataKey = /** @type {FingerSetSettingKey} */ (/** @type {unknown} */ (dataKey));
       CharacterSet.$keyboardRowSetCheckboxes[typedDataKey] = $(`#keyboard-row-set-ul div[data-binding=${typedDataKey}] input`);
       CharacterSet.$keyboardRowSetCheckboxes[typedDataKey].prop("checked", CharacterSet.keyboardRowSetSetting[typedDataKey]);
@@ -1370,9 +1367,9 @@ class CharacterSet {
   }
 
   /**
-   * @public
    * @param {CharacterSetSettingKey} dataKey
-   * @return {boolean}
+   * @returns {boolean}
+   * @public
    */
   getCharacterSetSetting(dataKey) {
     return CharacterSet.characterSetSetting[dataKey];
@@ -1382,32 +1379,32 @@ class CharacterSet {
    * @private
    * @param {CharacterSetSettingKey} dataKey
    * @param {boolean} checked
-   * @return {void}
+   * @returns {void}
    */
   setCharacterSetSetting(dataKey, checked) {
     switch (dataKey) {
       case "symbol":
-        const allRelatedDataKeys = ["symbol", "basic-symbol", "digit-symbol", "advance-symbol"];
+        const allRelatedDataKeys = ["symbol", "basicSymbol", "digitSymbol", "advanceSymbol"];
         for (let relatedDataKey of allRelatedDataKeys) {
           CharacterSet.characterSetSetting[relatedDataKey] = checked;
           CharacterSet.$characterSetCheckboxes[relatedDataKey].prop("checked", checked);
         }
         break;
-      case "basic-symbol":
-      case "digit-symbol":
-      case "advance-symbol":
+      case "basicSymbol":
+      case "digitSymbol":
+      case "advanceSymbol":
         CharacterSet.characterSetSetting[dataKey] = checked;
         CharacterSet.$characterSetCheckboxes[dataKey].prop("checked", checked);
 
-        if (CharacterSet.characterSetSetting["basic-symbol"] && CharacterSet.characterSetSetting["digit-symbol"] && CharacterSet.characterSetSetting["advance-symbol"]) {
+        if (CharacterSet.characterSetSetting["basicSymbol"] && CharacterSet.characterSetSetting["digitSymbol"] && CharacterSet.characterSetSetting["advance-symbol"]) {
           CharacterSet.characterSetSetting["symbol"] = true;
           CharacterSet.$characterSetCheckboxes["symbol"].prop("checked", true);
           CharacterSet.$characterSetCheckboxes["symbol"].prop("indeterminate", false);
-        } else if (CharacterSet.characterSetSetting["basic-symbol"] || CharacterSet.characterSetSetting["digit-symbol"] || CharacterSet.characterSetSetting["advance-symbol"]) {
+        } else if (CharacterSet.characterSetSetting["basicSymbol"] || CharacterSet.characterSetSetting["digit-symbol"] || CharacterSet.characterSetSetting["advanceSymbol"]) {
           CharacterSet.characterSetSetting["symbol"] = true;
           CharacterSet.$characterSetCheckboxes["symbol"].prop("checked", true);
           CharacterSet.$characterSetCheckboxes["symbol"].prop("indeterminate", true);
-        } else if (!CharacterSet.characterSetSetting["basic-symbol"] && !CharacterSet.characterSetSetting["digit-symbol"] && !CharacterSet.characterSetSetting["advance-symbol"]) {
+        } else if (!CharacterSet.characterSetSetting["basicSymbol"] && !CharacterSet.characterSetSetting["digit-symbol"] && !CharacterSet.characterSetSetting["advanceSymbol"]) {
           CharacterSet.characterSetSetting["symbol"] = false;
           CharacterSet.$characterSetCheckboxes["symbol"].prop("checked", false);
           CharacterSet.$characterSetCheckboxes["symbol"].prop("indeterminate", false);
@@ -1425,16 +1422,16 @@ class CharacterSet {
   /**
    * @private
    * @param {CharacterSetSettingKey} dataKey
-   * @return {void}
+   * @returns {void}
    */
   toggleCharacterSetSetting(dataKey) {
     this.setCharacterSetSetting(dataKey, !CharacterSet.characterSetSetting[dataKey]);
   }
 
   /**
-   * @public
    * @param {FingerSetSettingKey} dataKey
-   * @return {boolean}
+   * @returns {boolean}
+   * @public
    */
   getFingerSetSetting(dataKey) {
     return CharacterSet.fingerSetSetting[dataKey];
@@ -1444,7 +1441,7 @@ class CharacterSet {
    * @private
    * @param {FingerSetSettingKey} dataKey
    * @param {boolean} checked
-   * @return {void}
+   * @returns {void}
    */
   setFingerSetSetting(dataKey, checked) {
     CharacterSet.fingerSetSetting[dataKey] = checked;
@@ -1456,16 +1453,16 @@ class CharacterSet {
   /**
    * @private
    * @param {FingerSetSettingKey} dataKey
-   * @return {void}
+   * @returns {void}
    */
   toggleFingerSetSetting(dataKey) {
     this.setFingerSetSetting(dataKey, !CharacterSet.fingerSetSetting[dataKey]);
   }
 
   /**
-   * @public
    * @param {KeyboardRowSetSettingKey} dataKey
-   * @return {boolean}
+   * @returns {boolean}
+   * @public
    */
   getKeyboardRowSetSetting(dataKey) {
     return CharacterSet.keyboardRowSetSetting[dataKey];
@@ -1475,7 +1472,7 @@ class CharacterSet {
    * @private
    * @param {KeyboardRowSetSettingKey} dataKey
    * @param {boolean} checked
-   * @return {void}
+   * @returns {void}
    */
   setKeyboardRowSetSetting(dataKey, checked) {
     CharacterSet.keyboardRowSetSetting[dataKey] = checked;
@@ -1487,7 +1484,7 @@ class CharacterSet {
   /**
    * @private
    * @param {KeyboardRowSetSettingKey} dataKey
-   * @return {void}
+   * @returns {void}
    */
   toggleKeyboardRowSetSetting(dataKey) {
     this.setKeyboardRowSetSetting(dataKey, !CharacterSet.keyboardRowSetSetting[dataKey]);
@@ -1495,7 +1492,7 @@ class CharacterSet {
 
   /**
    * @private
-   * @return {Record<string, boolean>}
+   * @returns {Record<string, boolean>}
    */
   generateAvailableCharacters() {
     /** @type{Record<string, boolean>} */
@@ -1522,32 +1519,32 @@ class Game {
   /** @private @type {StatisticsTable} */ statisticsTable;
   /** @private @type {LetterGenerator} */ letterGenerator;
 
-  /** @private @type {number}*/ static intervalId = 0;
-  /** @private @type {number}*/ static letterIdx = 0;
-  /** @private @type {number}*/ static levelCombo = 0;
-  /** @private @type {number}*/ static levelComboStep = 5;
-  /** @private @type {number}*/ static levelMissing = 0;
-  /** @private @type {number}*/ static levelMissingStep = 5;
-  /** @private @type {string}*/ static shiftKeyIsPressing = "";
+  /** @private @type {number} */ static intervalId = 0;
+  /** @private @type {number} */ static letterIdx = 0;
+  /** @private @type {number} */ static levelCombo = 0;
+  /** @private @type {number} */ static levelComboStep = 5;
+  /** @private @type {number} */ static levelMissing = 0;
+  /** @private @type {number} */ static levelMissingStep = 5;
+  /** @private @type {string} */ static shiftKeyIsPressing = "";
 
   /**
    * @private
-   * @typedef {(keyof Game.switchSetting)} GameSwitchSettingKey
+   * @typedef {keyof Game.switchSetting} GameSwitchSettingKey
    */
   static switchSetting = {
-    "check-left-right-shift": true,
+    checkLeftRightShift: true,
   };
 
-  /** @type {JQuery<HTMLElement>}} */
+  /** @type {JQuery<HTMLElement>} } */
   // @ts-ignore
   static $comboProgressBar = null;
 
-  /** @type {JQuery<HTMLElement>}} */
+  /** @type {JQuery<HTMLElement>} } */
   // @ts-ignore
   static $missingProgressBar = null;
 
   // @ts-ignore
-  /** @type {{[key in CharacterSetSettingKey]: JQuery<HTMLElement>}} */ static $switches = {};
+  /** @type {{ [key in CharacterSetSettingKey]: JQuery<HTMLElement> }} */ static $switches = {};
 
   /**
    * @param {NumericalSetting} numericalSetting
@@ -1562,7 +1559,7 @@ class Game {
     const toggleSetting = this.toggleSetting.bind(this);
 
     for (let dataKey in Game.switchSetting) {
-      /** @type {(GameSwitchSettingKey)}*/
+      /** @type {GameSwitchSettingKey} */
       const typedDataKey = /** @type {GameSwitchSettingKey} */ (/** @type {unknown} */ (dataKey));
       Game.$switches[typedDataKey] = $(`div[data-binding=${typedDataKey}] input`);
       Game.$switches[typedDataKey].prop("checked", Game.switchSetting[typedDataKey]);
@@ -1575,6 +1572,7 @@ class Game {
   }
 
   /**
+   * @returns {number}
    * @public
    */
   static getIntervalId() {
@@ -1582,6 +1580,8 @@ class Game {
   }
 
   /**
+   * @param {boolean} attachListener
+   * @returns {void}
    * @public
    */
   startPractice(attachListener = true) {
@@ -1604,12 +1604,12 @@ class Game {
     const trackHeight = $("#track-container").height() ?? 0;
 
     const kpm = this.numericalSetting.getData("kpm");
-    const letterSpeed = this.numericalSetting.getData("letter-speed");
-    const letterDivHeight = this.numericalSetting.getData("letter-div-height");
-    const perfectHeight = this.numericalSetting.getData("perfect-height");
+    const letterSpeed = this.numericalSetting.getData("letterSpeed");
+    const letterDivHeight = this.numericalSetting.getData("letterDivHeight");
+    const perfectHeight = this.numericalSetting.getData("perfectHeight");
 
     const timeInterval = (1 / (kpm / 60)) * 1000;
-    /**@type {[number, number]} */
+    /** @type {[number, number]} */
     const perfectRange = [0, trackHeight - perfectHeight];
 
     Game.intervalId = window.setInterval(() => {
@@ -1619,8 +1619,8 @@ class Game {
         const { finger, element } = newLetter;
         $(trackMap[finger]).append(element);
         $(element).animate({ top: trackHeight + letterDivHeight }, ((trackHeight + letterDivHeight) / letterSpeed) * 1000, "linear", function () {
-          statisticsTable.addData("miss-count");
-          statisticsTable.resetData("combo-count");
+          statisticsTable.addData("missCount");
+          statisticsTable.resetData("comboCount");
           increaseLevelMissing();
           $(element).remove();
         });
@@ -1647,6 +1647,7 @@ class Game {
   }
 
   /**
+   * @returns {void}
    * @public
    */
   stopPractice() {
@@ -1660,6 +1661,7 @@ class Game {
   /**
    * @private
    * @param {GameSwitchSettingKey} dataKey
+   * @returns {boolean}
    */
   getSwitchSetting(dataKey) {
     return Game.switchSetting[dataKey];
@@ -1669,6 +1671,7 @@ class Game {
    * @private
    * @param {GameSwitchSettingKey} dataKey
    * @param {boolean} checked
+   * @returns {void}
    */
   setSwitchSetting(dataKey, checked) {
     Game.switchSetting[dataKey] = checked;
@@ -1678,6 +1681,7 @@ class Game {
   /**
    * @private
    * @param {GameSwitchSettingKey} dataKey
+   * @returns {void}
    */
   toggleSetting(dataKey) {
     this.setSwitchSetting(dataKey, !Game.switchSetting[dataKey]);
@@ -1686,12 +1690,13 @@ class Game {
   /**
    * @private
    * @param {string} type
+   * @returns {void}
    */
   toggleInputAndButtonWhenStartOrStop(type) {
     const bool = type === "start" ? true : false;
 
     /** @type {NumericalSettingDataKey[]} */
-    const settingArr = ["kpm", "letter-speed", "letter-div-height", "perfect-height"];
+    const settingArr = ["kpm", "letterSpeed", "letterDivHeight", "perfectHeight"];
     bool ? this.numericalSetting.disableInputs(settingArr) : this.numericalSetting.enableInputs(settingArr);
     $("#check-left-right-shift-setting-container input").prop("disabled", bool);
     $("#start-practice-btn").prop("disabled", bool);
@@ -1700,16 +1705,16 @@ class Game {
 
   /**
    * @private
-   * @param {{[key in LetterGeneratorDataKey]: JQuery<HTMLElement>}} trackMap
+   * @param {{ [key in LetterGeneratorDataKey]: JQuery<HTMLElement> }} trackMap
    * @param {[number, number]} perfectRange
    */
   attachKeydownKeyupListener(trackMap, perfectRange) {
     const increaseLevelCombo = this.increaseLevelCombo.bind(this);
     const statisticsTable = this.statisticsTable;
 
-    const checkLeftRightShift = this.getSwitchSetting("check-left-right-shift");
+    const checkLeftRightShift = this.getSwitchSetting("checkLeftRightShift");
 
-    $(document).on("keydown.game", function (/** @type{JQuery.KeyDownEvent<Document, undefined, Document, Document>}*/ e) {
+    $(document).on("keydown.game", function (/** @type{JQuery.KeyDownEvent<Document, undefined, Document, Document>} */ e) {
       if (e.code === "ShiftLeft" && Game.shiftKeyIsPressing !== "left") {
         Game.shiftKeyIsPressing = "left";
       } else if (e.code === "ShiftRight" && Game.shiftKeyIsPressing !== "right") {
@@ -1736,13 +1741,13 @@ class Game {
 
           const top = parseInt($(firstChild).css("top").replace("px", ""));
           if (top >= perfectRange[0] && top <= perfectRange[1]) {
-            statisticsTable.addData("perfect-count");
-            statisticsTable.addData("combo-count");
+            statisticsTable.addData("perfectCount");
+            statisticsTable.addData("comboCount");
             $(firstChild).stop().remove();
             increaseLevelCombo(2);
           } else {
-            statisticsTable.addData("good-count");
-            statisticsTable.addData("combo-count");
+            statisticsTable.addData("goodCount");
+            statisticsTable.addData("comboCount");
             $(firstChild).stop().remove();
             increaseLevelCombo(1);
           }
@@ -1753,6 +1758,7 @@ class Game {
 
   /**
    * @private
+   * @returns {void}
    */
   clearInterval() {
     window.clearInterval(Game.getIntervalId());
@@ -1762,6 +1768,7 @@ class Game {
   /**
    * @private
    * @param {number} kpm
+   * @returns {void}
    */
   restartPracticeWithDifferentKmp(kpm) {
     this.clearInterval();
@@ -1772,6 +1779,7 @@ class Game {
   /**
    * @private
    * @param {number} newValue
+   * @returns {void}
    */
   setLevelCombo(newValue) {
     Game.levelCombo = newValue;
@@ -1781,22 +1789,16 @@ class Game {
   /**
    * @private
    * @param {number} increment
+   * @returns {void}
    */
   increaseLevelCombo(increment) {
     this.setLevelCombo(Game.levelCombo + increment);
     this.resetLevelMissing();
   }
 
-  // /**
-  //  * @private
-  //  * @param {number} decrement
-  //  */
-  // static decreaseLevelCombo(decrement) {
-  //   Game.setLevelCombo(Game.levelCombo - decrement);
-  // }
-
   /**
    * @private
+   * @returns {void}
    */
   resetLevelCombo() {
     this.setLevelCombo(0);
@@ -1805,6 +1807,7 @@ class Game {
   /**
    * @private
    * @param {number} newValue
+   * @returns {void}
    */
   setLevelMissing(newValue) {
     Game.levelMissing = newValue;
@@ -1813,6 +1816,7 @@ class Game {
 
   /**
    * @private
+   * @returns {void}
    */
   increaseLevelMissing() {
     this.setLevelMissing(Game.levelMissing + 1);
@@ -1821,6 +1825,7 @@ class Game {
 
   /**
    * @private
+   * @returns {void}
    */
   resetLevelMissing() {
     this.setLevelMissing(0);
@@ -1829,6 +1834,7 @@ class Game {
   /**
    * @private
    * @param {number} idx
+   * @returns {number}
    */
   getZIndex(idx) {
     return 1000 - (idx % 1000);
@@ -1838,7 +1844,7 @@ class Game {
    * @private
    * @param {number} letterDivHeight
    * @param {number} idx
-   * @returns {{finger: LetterGeneratorDataKey, element: JQuery<HTMLElement>} | undefined}
+   * @returns {{ finger: LetterGeneratorDataKey; element: JQuery<HTMLElement> } | undefined}
    */
   generateNewLetterElement(letterDivHeight, idx) {
     const getZIndex = this.getZIndex.bind(this);
@@ -1879,8 +1885,6 @@ $(function () {
       game.stopPractice();
     }
   });
-
-  // $("#characterSetModal").modal("show");
 
   $(".keyboard-base .key").each(function () {
     const $this = $(this);
