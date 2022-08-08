@@ -13,8 +13,6 @@ input[type="number"] {
 #root {
   width: max(1200px, 100vw, 100%);
   height: max(500px, 100vh);
-  outline: black solid 1px;
-  background-color: lightgray;
 }
 
 #content {
@@ -23,14 +21,14 @@ input[type="number"] {
   width: 100%;
 }
 
-#game-statistics-container {
+#left-side-bar-container {
   flex: 1 1 auto;
   width: calc((100% - 800px) / 2);
 }
 
 #track-container {
   width: 800px;
-  flex: 0 0 auto;
+  flex: 0 0 800px;
 }
 
 #setting-container {

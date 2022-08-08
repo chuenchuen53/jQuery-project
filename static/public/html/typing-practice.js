@@ -1202,7 +1202,7 @@ class StatisticsTable {
     for (let dataKey in StatisticsTable.data) {
       /** @type {(StatisticsTableDataKey)}*/
       const typedDataKey = /** @type {StatisticsTableDataKey} */ (/** @type {unknown} */ (dataKey));
-      StatisticsTable.$tableCell[typedDataKey] = $(`#game-statistics-container table tbody tr td[data-binding=${dataKey}]`);
+      StatisticsTable.$tableCell[typedDataKey] = $(`#game-statistics-container tbody tr td[data-binding=${dataKey}]`);
       StatisticsTable.$tableCell[typedDataKey].text(StatisticsTable.data[dataKey].toString());
     }
   }
