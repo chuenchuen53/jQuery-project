@@ -1,4 +1,5 @@
 //@ts-check
+/* global $*/
 
 class KeyData {
   static data = Object.freeze({
@@ -1382,9 +1383,9 @@ class CharacterSet {
    * @returns {void}
    */
   setCharacterSetSetting(dataKey, checked) {
+    const allRelatedDataKeys = ["symbol", "basicSymbol", "digitSymbol", "advanceSymbol"];
     switch (dataKey) {
       case "symbol":
-        const allRelatedDataKeys = ["symbol", "basicSymbol", "digitSymbol", "advanceSymbol"];
         for (let relatedDataKey of allRelatedDataKeys) {
           CharacterSet.characterSetSetting[relatedDataKey] = checked;
           CharacterSet.$characterSetCheckboxes[relatedDataKey].prop("checked", checked);

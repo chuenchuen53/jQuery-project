@@ -36,10 +36,6 @@ input[type="number"] {
   width: calc((100% - 800px) / 2);
 }
 
-.track:first-of-type {
-  border-left: grey solid 1px;
-}
-
 .track {
   width: 100px;
   height: 100%;
@@ -49,6 +45,10 @@ input[type="number"] {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.track:first-of-type {
+  border-left: grey solid 1px;
 }
 
 #perfect-line {
@@ -62,7 +62,7 @@ input[type="number"] {
   align-items: center;
   width: 100px;
   font-size: 50px;
-  background-color: rgb(230, 230, 230);
+  background-color: rgb(230 230 230);
 }
 
 /* #region keyboard part */
@@ -70,7 +70,7 @@ input[type="number"] {
 .keyboard-base {
   width: max-content;
   padding: 20px;
-  background-color: rgb(197, 197, 197);
+  background-color: rgb(197 197 197);
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(30, 30px);
@@ -80,7 +80,7 @@ input[type="number"] {
 }
 
 .key {
-  background-color: rgb(243, 243, 243);
+  background-color: rgb(243 243 243);
   border: 2px solid black;
   border-radius: 5px;
   grid-column: span 2;
