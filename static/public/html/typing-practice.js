@@ -1235,6 +1235,15 @@ class StatisticsTable {
   }
 
   /**
+   * @returns {void}
+   * @public
+   */
+  resetAllData() {
+    const keys = /** @type {StatisticsTableDataKey[]} */ (Object.keys(StatisticsTable.data));
+    keys.forEach((key) => this.resetData(key));
+  }
+
+  /**
    * @private
    * @returns {void}
    */
@@ -1877,6 +1886,7 @@ $(function () {
 
   $("#start-practice-btn").on("click", function () {
     if (Game.getIntervalId() === 0) {
+      statisticsTable.resetAllData();
       game.startPractice();
     }
   });
